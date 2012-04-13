@@ -16,10 +16,10 @@
     NSArray         *m_groupMeditation;
 }
 
-@property (nonatomic, retain) IBOutlet UITableView*     tbl_meditate;
+@property (nonatomic, retain) IBOutlet UITableView     *tbl_meditate;
 
-@property (nonatomic, retain) NSArray*     deepBreathing;
-@property (nonatomic, retain) NSArray*     bobyScan;
-@property (nonatomic, retain) NSArray*     groupMeditation;
+@property (nonatomic, retain) NSArray     *deepBreathing;
+@property (nonatomic, retain) NSArray     *bobyScan;
+@property (nonatomic, retain) NSArray     *groupMeditation;
 
 @end

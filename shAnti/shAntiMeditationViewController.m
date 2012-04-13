@@ -7,18 +7,21 @@
 //
 
 #import "shAntiMeditationViewController.h"
+#import <MediaPlayer/MPVolumeView.h>
 
 @interface shAntiMeditationViewController ()
 
 @end
 
 @implementation shAntiMeditationViewController
+@synthesize iv_mediaBar     = m_iv_mediaBar;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        
     }
     return self;
 }
@@ -27,6 +30,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    // Add volume control slider
+    MPVolumeView *volumeSlider = [[MPVolumeView alloc] initWithFrame:self.iv_mediaBar.bounds];
+    [self.iv_mediaBar addSubview:volumeSlider];
 }
 
 - (void)viewDidUnload

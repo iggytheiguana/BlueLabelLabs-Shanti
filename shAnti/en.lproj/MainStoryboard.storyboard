@@ -384,7 +384,7 @@
         <scene sceneID="tfL-vN-v5B">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aKf-xb-sMw" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController storyboardIdentifier="MeditationViewController" title="Meditation" id="Kch-dK-gE5" customClass="shAntiMeditationViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MeditationViewController" title="Meditation" hidesBottomBarWhenPushed="YES" id="Kch-dK-gE5" customClass="shAntiMeditationViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3r5-9X-tF2">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -393,23 +393,23 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="mediaBarBackground.png" id="ZAh-VU-b6y">
+                                <rect key="frame" x="0.0" y="328" width="320" height="88"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem systemItem="rewind" id="taV-A6-IX8"/>
-                        <barButtonItem systemItem="play" id="waM-1d-ZMw"/>
-                        <barButtonItem systemItem="pause" id="pfN-j7-mfp"/>
-                        <barButtonItem image="icon-heart.png" id="9SF-Zn-xIV"/>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="MIl-Tl-Glh"/>
-                        <barButtonItem systemItem="done" id="uRF-Gi-9uv"/>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Meditation" id="0Nh-DJ-OnG">
                         <barButtonItem key="rightBarButtonItem" image="icon-info.png" id="OPx-FA-7aO"/>
                     </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics" barStyle="blackTranslucent"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="iv_mediaBar" destination="ZAh-VU-b6y" id="ciu-fb-n9k"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="1566" y="888"/>
@@ -462,9 +462,9 @@
         <image name="icon-arrowup.png" width="33" height="22"/>
         <image name="icon-community.png" width="26" height="19"/>
         <image name="icon-globe2.png" width="23" height="23"/>
-        <image name="icon-heart.png" width="26" height="21"/>
         <image name="icon-info.png" width="21" height="22"/>
         <image name="icon-mail1.png" width="31" height="25"/>
+        <image name="mediaBarBackground.png" width="320" height="88"/>
         <image name="stock-photo-2038361-moon-meditation.jpg" width="380" height="253"/>
     </resources>
     <classes>
@@ -479,6 +479,9 @@
         </class>
         <class className="shAntiMeditationViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/shAntiMeditationViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="iv_mediaBar" candidateClass="UIImageView"/>
+            </relationships>
         </class>
         <class className="shAntiSecondViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/shAntiSecondViewController.h"/>

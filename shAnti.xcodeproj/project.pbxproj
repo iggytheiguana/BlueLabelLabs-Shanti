@@ -42,6 +42,10 @@
 		526C23641538E4A2003008AB /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 526C23631538E4A2003008AB /* Default@2x.png */; };
 		526C23691538E540003008AB /* appIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 526C23671538E500003008AB /* appIcon.png */; };
 		526C236B1538E544003008AB /* appIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 526C236A1538E544003008AB /* appIcon@2x.png */; };
+		526C236E1538EB2C003008AB /* mediaBarBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 526C236C1538EB2C003008AB /* mediaBarBackground.png */; };
+		526C236F1538EB2C003008AB /* mediaBarBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 526C236D1538EB2C003008AB /* mediaBarBackground@2x.png */; };
+		526C23711538EE2B003008AB /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 526C23701538EE2B003008AB /* MediaPlayer.framework */; };
+		526C23731538EEBE003008AB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 526C23721538EEBE003008AB /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +92,10 @@
 		526C23631538E4A2003008AB /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		526C23671538E500003008AB /* appIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appIcon.png; sourceTree = "<group>"; };
 		526C236A1538E544003008AB /* appIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appIcon@2x.png"; sourceTree = "<group>"; };
+		526C236C1538EB2C003008AB /* mediaBarBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mediaBarBackground.png; sourceTree = "<group>"; };
+		526C236D1538EB2C003008AB /* mediaBarBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mediaBarBackground@2x.png"; sourceTree = "<group>"; };
+		526C23701538EE2B003008AB /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		526C23721538EEBE003008AB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +103,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				526C23731538EEBE003008AB /* AudioToolbox.framework in Frameworks */,
+				526C23711538EE2B003008AB /* MediaPlayer.framework in Frameworks */,
 				526C22EC1538B4C0003008AB /* AVFoundation.framework in Frameworks */,
 				526C22C41538A8D8003008AB /* UIKit.framework in Frameworks */,
 				526C22C61538A8D8003008AB /* Foundation.framework in Frameworks */,
@@ -127,6 +137,8 @@
 		526C22C21538A8D8003008AB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				526C23721538EEBE003008AB /* AudioToolbox.framework */,
+				526C23701538EE2B003008AB /* MediaPlayer.framework */,
 				526C22EB1538B4C0003008AB /* AVFoundation.framework */,
 				526C22C31538A8D8003008AB /* UIKit.framework */,
 				526C22C51538A8D8003008AB /* Foundation.framework */,
@@ -173,6 +185,8 @@
 		526C23351538C778003008AB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				526C236C1538EB2C003008AB /* mediaBarBackground.png */,
+				526C236D1538EB2C003008AB /* mediaBarBackground@2x.png */,
 				526C23631538E4A2003008AB /* Default@2x.png */,
 				526C23611538E46D003008AB /* Default.png */,
 				526C23521538C84B003008AB /* stock-photo-2038361-moon-meditation.jpg */,
@@ -270,6 +284,8 @@
 				526C23641538E4A2003008AB /* Default@2x.png in Resources */,
 				526C23691538E540003008AB /* appIcon.png in Resources */,
 				526C236B1538E544003008AB /* appIcon@2x.png in Resources */,
+				526C236E1538EB2C003008AB /* mediaBarBackground.png in Resources */,
+				526C236F1538EB2C003008AB /* mediaBarBackground@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

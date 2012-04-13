@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface shAntiMeditationViewController : UIViewController
+@interface shAntiMeditationViewController : UIViewController {
+    UIImageView      *m_iv_mediaBar;
+}
+
+@property (nonatomic, retain) IBOutlet UIImageView       *iv_mediaBar;
 
 @end
