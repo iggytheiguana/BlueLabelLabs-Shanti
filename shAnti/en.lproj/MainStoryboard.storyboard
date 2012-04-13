@@ -70,11 +70,11 @@
             </objects>
             <point key="canvasLocation" x="653" y="498"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Sh Anti Meditate View Controller - Meditate View Controller-->
         <scene sceneID="LIJ-Ev-een">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rqA-MN-AaS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="igC-Lt-NnA" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MeditateViewController" title="Meditate View Controller" id="igC-Lt-NnA" customClass="shAntiMeditateViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Iho-w7-2Wx">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -82,7 +82,7 @@
                         <sections>
                             <tableViewSection headerTitle="Deep Breathing" id="uNV-Xx-Zy3">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="3r0-zB-dQN" detailTextLabel="Bh7-Ac-NIu" style="IBUITableViewCellStyleValue1" id="kFs-Y8-L9S">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DeepBreathing" textLabel="3r0-zB-dQN" detailTextLabel="Bh7-Ac-NIu" style="IBUITableViewCellStyleValue1" id="kFs-Y8-L9S">
                                         <rect key="frame" x="0.0" y="46" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -107,7 +107,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="3C8-H6-fmO" detailTextLabel="ftd-Qq-k2z" style="IBUITableViewCellStyleValue1" id="Wbe-Nq-GEx">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DeepBreathing" textLabel="3C8-H6-fmO" detailTextLabel="ftd-Qq-k2z" style="IBUITableViewCellStyleValue1" id="Wbe-Nq-GEx">
                                         <rect key="frame" x="0.0" y="91" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -161,7 +161,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Body Scan" id="eE1-u6-W3e">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="TAB-Um-Ez4" detailTextLabel="mfE-b1-Ium" style="IBUITableViewCellStyleValue1" id="BOj-tn-hWK">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BodyScan" textLabel="TAB-Um-Ez4" detailTextLabel="mfE-b1-Ium" style="IBUITableViewCellStyleValue1" id="BOj-tn-hWK">
                                         <rect key="frame" x="0.0" y="226" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -186,7 +186,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="KLp-Rt-jB5" detailTextLabel="Str-qg-e91" style="IBUITableViewCellStyleValue1" id="Lb3-up-n6O">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BodyScan" textLabel="KLp-Rt-jB5" detailTextLabel="Str-qg-e91" style="IBUITableViewCellStyleValue1" id="Lb3-up-n6O">
                                         <rect key="frame" x="0.0" y="271" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -211,7 +211,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="3aC-Hn-oPq" detailTextLabel="XbS-HD-rBv" style="IBUITableViewCellStyleValue1" id="v4N-Mg-DD5">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BodyScan" textLabel="3aC-Hn-oPq" detailTextLabel="XbS-HD-rBv" style="IBUITableViewCellStyleValue1" id="v4N-Mg-DD5">
                                         <rect key="frame" x="0.0" y="315" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -240,7 +240,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Group Meditation" id="Odm-Wq-HOC">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="RAy-pr-JXS" detailTextLabel="8je-CH-PyB" style="IBUITableViewCellStyleValue1" id="s6r-iy-ULP">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="GroupMeditation" textLabel="RAy-pr-JXS" detailTextLabel="8je-CH-PyB" style="IBUITableViewCellStyleValue1" id="s6r-iy-ULP">
                                         <rect key="frame" x="0.0" y="406" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -265,14 +265,14 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="kqS-8f-ggR" detailTextLabel="9Bl-Kr-5az" style="IBUITableViewCellStyleValue1" id="nC5-xt-PcL">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="GroupMeditation" textLabel="kqS-8f-ggR" detailTextLabel="9Bl-Kr-5az" style="IBUITableViewCellStyleValue1" id="nC5-xt-PcL">
                                         <rect key="frame" x="0.0" y="451" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="30 min @ 9pm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kqS-8f-ggR">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="30 min @ 4pm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kqS-8f-ggR">
                                                     <rect key="frame" x="10" y="11" width="115" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -290,7 +290,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="vXJ-Cw-99e" detailTextLabel="1jB-Sn-Z8f" style="IBUITableViewCellStyleValue1" id="bG1-69-Sz1">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="GroupMeditation" textLabel="vXJ-Cw-99e" detailTextLabel="1jB-Sn-Z8f" style="IBUITableViewCellStyleValue1" id="bG1-69-Sz1">
                                         <rect key="frame" x="0.0" y="495" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -318,6 +318,10 @@
                                 </cells>
                             </tableViewSection>
                         </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="igC-Lt-NnA" id="H7S-wb-Dgo"/>
+                            <outlet property="delegate" destination="igC-Lt-NnA" id="DE1-o1-CLC"/>
+                        </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="fzE-sc-KZn">
                         <nil key="title"/>
@@ -334,6 +338,10 @@
                     </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tbl_meditate" destination="Iho-w7-2Wx" id="Sq6-Af-U9t"/>
+                    </connections>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="1187" y="888"/>
@@ -372,11 +380,11 @@
             </objects>
             <point key="canvasLocation" x="653" y="2511"/>
         </scene>
-        <!--View Controller - Meditation-->
+        <!--Sh Anti Meditation View Controller - Meditation-->
         <scene sceneID="tfL-vN-v5B">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aKf-xb-sMw" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController title="Meditation" id="Kch-dK-gE5" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MeditationViewController" title="Meditation" id="Kch-dK-gE5" customClass="shAntiMeditationViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3r5-9X-tF2">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -404,7 +412,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics" barStyle="blackTranslucent"/>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1187" y="1517"/>
+            <point key="canvasLocation" x="1566" y="888"/>
         </scene>
         <!--Navigation Controller - Meditate-->
         <scene sceneID="FvQ-U0-nO6">
@@ -420,7 +428,6 @@
                     </navigationBar>
                     <connections>
                         <segue destination="igC-Lt-NnA" kind="relationship" relationship="rootViewController" id="7EI-gB-Yob"/>
-                        <segue destination="Kch-dK-gE5" kind="push" id="FWO-5W-Mz9"/>
                     </connections>
                 </navigationController>
             </objects>
@@ -463,6 +470,15 @@
     <classes>
         <class className="shAntiFirstViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/shAntiFirstViewController.h"/>
+        </class>
+        <class className="shAntiMeditateViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/shAntiMeditateViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tbl_meditate" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="shAntiMeditationViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/shAntiMeditationViewController.h"/>
         </class>
         <class className="shAntiSecondViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/shAntiSecondViewController.h"/>

@@ -36,6 +36,12 @@
 		526C23501538C839003008AB /* icon-info.png in Resources */ = {isa = PBXBuildFile; fileRef = 526C234E1538C839003008AB /* icon-info.png */; };
 		526C23511538C839003008AB /* icon-info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 526C234F1538C839003008AB /* icon-info@2x.png */; };
 		526C23531538C84B003008AB /* stock-photo-2038361-moon-meditation.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 526C23521538C84B003008AB /* stock-photo-2038361-moon-meditation.jpg */; };
+		526C235A1538CD21003008AB /* shAntiMeditateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 526C23581538CD21003008AB /* shAntiMeditateViewController.m */; };
+		526C235E1538E014003008AB /* shAntiMeditationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 526C235D1538E014003008AB /* shAntiMeditationViewController.m */; };
+		526C23621538E46D003008AB /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 526C23611538E46D003008AB /* Default.png */; };
+		526C23641538E4A2003008AB /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 526C23631538E4A2003008AB /* Default@2x.png */; };
+		526C23691538E540003008AB /* appIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 526C23671538E500003008AB /* appIcon.png */; };
+		526C236B1538E544003008AB /* appIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 526C236A1538E544003008AB /* appIcon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +80,14 @@
 		526C234E1538C839003008AB /* icon-info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-info.png"; sourceTree = "<group>"; };
 		526C234F1538C839003008AB /* icon-info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-info@2x.png"; sourceTree = "<group>"; };
 		526C23521538C84B003008AB /* stock-photo-2038361-moon-meditation.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "stock-photo-2038361-moon-meditation.jpg"; sourceTree = "<group>"; };
+		526C23571538CD21003008AB /* shAntiMeditateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shAntiMeditateViewController.h; sourceTree = "<group>"; };
+		526C23581538CD21003008AB /* shAntiMeditateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = shAntiMeditateViewController.m; sourceTree = "<group>"; };
+		526C235C1538E014003008AB /* shAntiMeditationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shAntiMeditationViewController.h; sourceTree = "<group>"; };
+		526C235D1538E014003008AB /* shAntiMeditationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = shAntiMeditationViewController.m; sourceTree = "<group>"; };
+		526C23611538E46D003008AB /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		526C23631538E4A2003008AB /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		526C23671538E500003008AB /* appIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appIcon.png; sourceTree = "<group>"; };
+		526C236A1538E544003008AB /* appIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appIcon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +108,8 @@
 		526C22B41538A8D7003008AB = {
 			isa = PBXGroup;
 			children = (
+				526C236A1538E544003008AB /* appIcon@2x.png */,
+				526C23671538E500003008AB /* appIcon.png */,
 				526C22C91538A8D8003008AB /* shAnti */,
 				526C22C21538A8D8003008AB /* Frameworks */,
 				526C22C01538A8D8003008AB /* Products */,
@@ -135,6 +151,10 @@
 				526C22E21538A8D8003008AB /* second.png */,
 				526C22E41538A8D8003008AB /* second@2x.png */,
 				526C22CA1538A8D8003008AB /* Supporting Files */,
+				526C23571538CD21003008AB /* shAntiMeditateViewController.h */,
+				526C23581538CD21003008AB /* shAntiMeditateViewController.m */,
+				526C235C1538E014003008AB /* shAntiMeditationViewController.h */,
+				526C235D1538E014003008AB /* shAntiMeditationViewController.m */,
 			);
 			path = shAnti;
 			sourceTree = "<group>";
@@ -153,6 +173,8 @@
 		526C23351538C778003008AB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				526C23631538E4A2003008AB /* Default@2x.png */,
+				526C23611538E46D003008AB /* Default.png */,
 				526C23521538C84B003008AB /* stock-photo-2038361-moon-meditation.jpg */,
 				526C234E1538C839003008AB /* icon-info.png */,
 				526C234F1538C839003008AB /* icon-info@2x.png */,
@@ -244,6 +266,10 @@
 				526C23501538C839003008AB /* icon-info.png in Resources */,
 				526C23511538C839003008AB /* icon-info@2x.png in Resources */,
 				526C23531538C84B003008AB /* stock-photo-2038361-moon-meditation.jpg in Resources */,
+				526C23621538E46D003008AB /* Default.png in Resources */,
+				526C23641538E4A2003008AB /* Default@2x.png in Resources */,
+				526C23691538E540003008AB /* appIcon.png in Resources */,
+				526C236B1538E544003008AB /* appIcon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +284,8 @@
 				526C22D41538A8D8003008AB /* shAntiAppDelegate.m in Sources */,
 				526C22DA1538A8D8003008AB /* shAntiFirstViewController.m in Sources */,
 				526C22E11538A8D8003008AB /* shAntiSecondViewController.m in Sources */,
+				526C235A1538CD21003008AB /* shAntiMeditateViewController.m in Sources */,
+				526C235E1538E014003008AB /* shAntiMeditationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
