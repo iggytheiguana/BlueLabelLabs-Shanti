@@ -126,6 +126,7 @@
     [self.btn_play setHidden:NO];
     
     [self.audioPlayer pause];
+    [self.audioPlayer2 pause];
 }
 
 -(void)stopAudio
@@ -135,6 +136,7 @@
     [self.btn_play setHidden:NO];
     
     [self.audioPlayer stop];
+    [self.audioPlayer2 stop];
 }
 
 
@@ -145,6 +147,7 @@
     [self.btn_pause setHidden:NO];
     
     [self.audioPlayer setCurrentTime:0.0];
+    [self.audioPlayer2 setCurrentTime:0.0];
 }
 
 -(void)adjustVolume
