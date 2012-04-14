@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface shAntiSecondViewController : UIViewController
+#import "BaseViewController.h"
+@interface shAntiSecondViewController : BaseViewController
 
 @end
