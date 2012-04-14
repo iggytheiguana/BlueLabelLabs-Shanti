@@ -163,6 +163,14 @@
 		C50C62BD1539E5EF000C0DD9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C50C62BC1539E5EF000C0DD9 /* SystemConfiguration.framework */; };
 		C50C62BF1539E6FA000C0DD9 /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C50C62BE1539E6FA000C0DD9 /* libOAuth.a */; };
 		C50C62C11539E735000C0DD9 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C50C62C01539E735000C0DD9 /* MobileCoreServices.framework */; };
+		C50C62C51539EF03000C0DD9 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C50C62C41539EF03000C0DD9 /* BaseViewController.m */; };
+		C50C62D11539EF9A000C0DD9 /* UIPagedViewSlider4.m in Sources */ = {isa = PBXBuildFile; fileRef = C50C62C91539EF9A000C0DD9 /* UIPagedViewSlider4.m */; };
+		C50C62D21539EF9A000C0DD9 /* UIProgressHUDView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C50C62CA1539EF9A000C0DD9 /* UIProgressHUDView.xib */; };
+		C50C62D31539EF9A000C0DD9 /* UIProgressHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = C50C62CC1539EF9A000C0DD9 /* UIProgressHUDView.m */; };
+		C50C62D41539EF9A000C0DD9 /* UICustomAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = C50C62CE1539EF9A000C0DD9 /* UICustomAlertView.m */; };
+		C50C62D51539EF9A000C0DD9 /* UIPromptAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = C50C62D01539EF9A000C0DD9 /* UIPromptAlertView.m */; };
+		C50C62D81539EFB4000C0DD9 /* UILoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = C50C62D71539EFB4000C0DD9 /* UILoginView.m */; };
+		C50C62DD1539F116000C0DD9 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C50C62DC1539F116000C0DD9 /* MBProgressHUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -476,6 +484,21 @@
 		C50C62BC1539E5EF000C0DD9 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C50C62BE1539E6FA000C0DD9 /* libOAuth.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOAuth.a; sourceTree = "<group>"; };
 		C50C62C01539E735000C0DD9 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		C50C62C31539EF03000C0DD9 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		C50C62C41539EF03000C0DD9 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		C50C62C81539EF9A000C0DD9 /* UIPagedViewSlider4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPagedViewSlider4.h; sourceTree = "<group>"; };
+		C50C62C91539EF9A000C0DD9 /* UIPagedViewSlider4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPagedViewSlider4.m; sourceTree = "<group>"; };
+		C50C62CA1539EF9A000C0DD9 /* UIProgressHUDView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UIProgressHUDView.xib; sourceTree = "<group>"; };
+		C50C62CB1539EF9A000C0DD9 /* UIProgressHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIProgressHUDView.h; sourceTree = "<group>"; };
+		C50C62CC1539EF9A000C0DD9 /* UIProgressHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIProgressHUDView.m; sourceTree = "<group>"; };
+		C50C62CD1539EF9A000C0DD9 /* UICustomAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICustomAlertView.h; sourceTree = "<group>"; };
+		C50C62CE1539EF9A000C0DD9 /* UICustomAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICustomAlertView.m; sourceTree = "<group>"; };
+		C50C62CF1539EF9A000C0DD9 /* UIPromptAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPromptAlertView.h; sourceTree = "<group>"; };
+		C50C62D01539EF9A000C0DD9 /* UIPromptAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPromptAlertView.m; sourceTree = "<group>"; };
+		C50C62D61539EFB4000C0DD9 /* UILoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UILoginView.h; sourceTree = "<group>"; };
+		C50C62D71539EFB4000C0DD9 /* UILoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UILoginView.m; sourceTree = "<group>"; };
+		C50C62DB1539F116000C0DD9 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		C50C62DC1539F116000C0DD9 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -550,6 +573,9 @@
 		526C22C91538A8D8003008AB /* shAnti */ = {
 			isa = PBXGroup;
 			children = (
+				C50C62D91539F095000C0DD9 /* Externals */,
+				C50C62C61539EF3C000C0DD9 /* Views */,
+				C50C62C21539EEDA000C0DD9 /* Generic */,
 				C50C622C1539C32D000C0DD9 /* Macros.h */,
 				526C23351538C778003008AB /* Resources */,
 				526C22D21538A8D8003008AB /* shAntiAppDelegate.h */,
@@ -1142,6 +1168,58 @@
 			name = OAuthConsumer;
 			sourceTree = "<group>";
 		};
+		C50C62C21539EEDA000C0DD9 /* Generic */ = {
+			isa = PBXGroup;
+			children = (
+				C50C62C31539EF03000C0DD9 /* BaseViewController.h */,
+				C50C62C41539EF03000C0DD9 /* BaseViewController.m */,
+			);
+			name = Generic;
+			sourceTree = "<group>";
+		};
+		C50C62C61539EF3C000C0DD9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C50C62C71539EF71000C0DD9 /* Generic */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		C50C62C71539EF71000C0DD9 /* Generic */ = {
+			isa = PBXGroup;
+			children = (
+				C50C62D61539EFB4000C0DD9 /* UILoginView.h */,
+				C50C62D71539EFB4000C0DD9 /* UILoginView.m */,
+				C50C62C81539EF9A000C0DD9 /* UIPagedViewSlider4.h */,
+				C50C62C91539EF9A000C0DD9 /* UIPagedViewSlider4.m */,
+				C50C62CA1539EF9A000C0DD9 /* UIProgressHUDView.xib */,
+				C50C62CB1539EF9A000C0DD9 /* UIProgressHUDView.h */,
+				C50C62CC1539EF9A000C0DD9 /* UIProgressHUDView.m */,
+				C50C62CD1539EF9A000C0DD9 /* UICustomAlertView.h */,
+				C50C62CE1539EF9A000C0DD9 /* UICustomAlertView.m */,
+				C50C62CF1539EF9A000C0DD9 /* UIPromptAlertView.h */,
+				C50C62D01539EF9A000C0DD9 /* UIPromptAlertView.m */,
+			);
+			name = Generic;
+			sourceTree = "<group>";
+		};
+		C50C62D91539F095000C0DD9 /* Externals */ = {
+			isa = PBXGroup;
+			children = (
+				C50C62DA1539F108000C0DD9 /* Hud */,
+			);
+			name = Externals;
+			sourceTree = "<group>";
+		};
+		C50C62DA1539F108000C0DD9 /* Hud */ = {
+			isa = PBXGroup;
+			children = (
+				C50C62DB1539F116000C0DD9 /* MBProgressHUD.h */,
+				C50C62DC1539F116000C0DD9 /* MBProgressHUD.m */,
+			);
+			name = Hud;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1232,6 +1310,7 @@
 				C50C61C71539BFA3000C0DD9 /* HTNotifier.strings in Resources */,
 				C50C62501539C62E000C0DD9 /* FBDialog.bundle in Resources */,
 				C50C62A41539E0C4000C0DD9 /* twitter_load.png in Resources */,
+				C50C62D21539EF9A000C0DD9 /* UIProgressHUDView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1350,6 +1429,13 @@
 				C50C62A21539E0C4000C0DD9 /* SA_OAuthTwitterController.m in Sources */,
 				C50C62A31539E0C4000C0DD9 /* SA_OAuthTwitterEngine.m in Sources */,
 				C50C62A71539E389000C0DD9 /* User.m in Sources */,
+				C50C62C51539EF03000C0DD9 /* BaseViewController.m in Sources */,
+				C50C62D11539EF9A000C0DD9 /* UIPagedViewSlider4.m in Sources */,
+				C50C62D31539EF9A000C0DD9 /* UIProgressHUDView.m in Sources */,
+				C50C62D41539EF9A000C0DD9 /* UICustomAlertView.m in Sources */,
+				C50C62D51539EF9A000C0DD9 /* UIPromptAlertView.m in Sources */,
+				C50C62D81539EFB4000C0DD9 /* UILoginView.m in Sources */,
+				C50C62DD1539F116000C0DD9 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
