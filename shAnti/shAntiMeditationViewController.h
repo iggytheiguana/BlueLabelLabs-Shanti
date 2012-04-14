@@ -18,9 +18,12 @@
     UIButton        *m_btn_rewind;
     UIButton        *m_btn_favorite;
     UIButton        *m_btn_info;
+    UIButton        *m_btn_music;
+    UIButton        *m_btn_voice;
     
-    AVAudioPlayer   *m_audioPlayer;
-    AVAudioPlayer   *m_audioPlayer2;
+    
+    AVAudioPlayer   *m_audioPlayerMusic;
+    AVAudioPlayer   *m_audioPlayerVoice;
     
 }
 
@@ -32,9 +35,11 @@
 @property (nonatomic, retain) IBOutlet UIButton         *btn_rewind;
 @property (nonatomic, retain) IBOutlet UIButton         *btn_favorite;
 @property (nonatomic, retain) IBOutlet UIButton         *btn_info;
+@property (nonatomic, retain) IBOutlet UIButton         *btn_music;
+@property (nonatomic, retain) IBOutlet UIButton         *btn_voice;
 
-@property (nonatomic, retain) AVAudioPlayer             *audioPlayer;
-@property (nonatomic, retain) AVAudioPlayer             *audioPlayer2;
+@property (nonatomic, retain) AVAudioPlayer             *audioPlayerMusic;
+@property (nonatomic, retain) AVAudioPlayer             *audioPlayerVoice;
 
 -(IBAction) playAudio;
 -(IBAction) pauseAudio;
@@ -42,7 +47,9 @@
 -(IBAction) rewindAudio;
 -(IBAction) onFavoriteButtonPressed;
 -(IBAction) onInfoButtonPressed;
--(IBAction) adjustVolume;
--(IBAction) adjustVolume2;
+-(IBAction) adjustMusic;
+-(IBAction) adjustVoice;
+-(IBAction) muteMusic;
+-(IBAction) muteVoice;
 
 @end

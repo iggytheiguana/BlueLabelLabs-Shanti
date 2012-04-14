@@ -21,8 +21,10 @@
 @synthesize btn_rewind      = m_btn_rewind;
 @synthesize btn_favorite    = m_btn_favorite;
 @synthesize btn_info        = m_btn_info;
-@synthesize audioPlayer     = m_audioPlayer;
-@synthesize audioPlayer2    = m_audioPlayer2;
+@synthesize btn_music       = m_btn_music;
+@synthesize btn_voice       = m_btn_voice;
+@synthesize audioPlayerMusic     = m_audioPlayerMusic;
+@synthesize audioPlayerVoice    = m_audioPlayerVoice;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -46,13 +48,13 @@
                                          ofType:@"mp3"]];
     
     NSError *error;
-    self.audioPlayer = [[AVAudioPlayer alloc]initWithContentsOfURL:url error:&error];
+    self.audioPlayerMusic = [[AVAudioPlayer alloc]initWithContentsOfURL:url error:&error];
     if (error)
     {
         NSLog(@"Error in audioPlayer: %@", [error localizedDescription]);
     } else {
-        self.audioPlayer.delegate = self;
-        [self.audioPlayer prepareToPlay];
+        self.audioPlayerMusic.delegate = self;
+        [self.audioPlayerMusic prepareToPlay];
         
         // Hide the play button because we wil autoplay
         [self.btn_play setHidden:YES];
@@ -64,13 +66,13 @@
                                          ofType:@"mp3"]];
     
     NSError *error2;
-    self.audioPlayer2 = [[AVAudioPlayer alloc]initWithContentsOfURL:url2 error:&error2];
+    self.audioPlayerVoice = [[AVAudioPlayer alloc]initWithContentsOfURL:url2 error:&error2];
     if (error)
     {
         NSLog(@"Error in audioPlayer: %@", [error2 localizedDescription]);
     } else {
-        self.audioPlayer2.delegate = self;
-        [self.audioPlayer2 prepareToPlay];
+        self.audioPlayerVoice.delegate = self;
+        [self.audioPlayerVoice prepareToPlay];
         
         // Hide the play button because we wil autoplay
         [self.btn_play setHidden:YES];
@@ -86,8 +88,16 @@
     self.iv_mediaBar = nil;
     self.sld_volumeControl = nil;
     self.sld_volumeControl2 = nil;
-    self.audioPlayer = nil;
-    self.audioPlayer2 = nil;
+    self.btn_play = nil;
+    self.btn_pause = nil;
+    self.btn_rewind = nil;
+    self.btn_favorite = nil;
+    self.btn_info = nil;
+    self.btn_music = nil;
+    self.btn_voice = nil;
+    
+    self.audioPlayerMusic = nil;
+    self.audioPlayerVoice = nil;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -115,8 +125,8 @@
     [self.btn_play setHidden:YES];
     [self.btn_pause setHidden:NO];
     
-    [self.audioPlayer play];
-    [self.audioPlayer2 play];
+    [self.audioPlayerMusic play];
+    [self.audioPlayerVoice play];
 }
 
 -(void)pauseAudio
@@ -125,8 +135,8 @@
     [self.btn_pause setHidden:YES];
     [self.btn_play setHidden:NO];
     
-    [self.audioPlayer pause];
-    [self.audioPlayer2 pause];
+    [self.audioPlayerMusic pause];
+    [self.audioPlayerVoice pause];
 }
 
 -(void)stopAudio
@@ -135,8 +145,8 @@
     [self.btn_pause setHidden:YES];
     [self.btn_play setHidden:NO];
     
-    [self.audioPlayer stop];
-    [self.audioPlayer2 stop];
+    [self.audioPlayerMusic stop];
+    [self.audioPlayerVoice stop];
 }
 
 
@@ -146,23 +156,53 @@
     [self.btn_play setHidden:YES];
     [self.btn_pause setHidden:NO];
     
-    [self.audioPlayer setCurrentTime:0.0];
-    [self.audioPlayer2 setCurrentTime:0.0];
+    [self.audioPlayerMusic setCurrentTime:0.0];
+    [self.audioPlayerVoice setCurrentTime:0.0];
 }
 
--(void)adjustVolume
+-(void)adjustMusic
 {
-    if (self.audioPlayer != nil)
+    if (self.audioPlayerMusic != nil)
     {
-        self.audioPlayer.volume = self.sld_volumeControl.value;
+        self.audioPlayerMusic.volume = self.sld_volumeControl.value;
     }
 }
 
--(void)adjustVolume2
+-(void)adjustVoice
 {
-    if (self.audioPlayer2 != nil)
+    if (self.audioPlayerVoice != nil)
     {
-        self.audioPlayer2.volume = self.sld_volumeControl2.value;
+        self.audioPlayerVoice.volume = self.sld_volumeControl2.value;
+    }
+}
+
+-(IBAction) muteMusic {
+    if (self.sld_volumeControl.value == 0.00) {
+        // Unmute
+        [self.btn_music setSelected:YES];
+        self.audioPlayerMusic.volume = 0.43;
+        self.sld_volumeControl.value = 0.43;
+    }
+    else {
+        // Mute
+        [self.btn_music setSelected:NO];
+        self.audioPlayerMusic.volume = 0.00;
+        self.sld_volumeControl.value = 0.00;
+    }
+}
+
+-(IBAction) muteVoice {
+    if (self.sld_volumeControl2.value == 0.00) {
+        // Unmute
+        [self.btn_voice setSelected:YES];
+        self.audioPlayerVoice.volume = 0.43;
+        self.sld_volumeControl2.value = 0.43;
+    }
+    else {
+        // Mute
+        [self.btn_voice setSelected:NO];
+        self.audioPlayerVoice.volume = 0.00;
+        self.sld_volumeControl2.value = 0.00;
     }
 }
 
