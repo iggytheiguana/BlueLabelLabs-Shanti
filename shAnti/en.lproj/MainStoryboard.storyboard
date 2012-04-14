@@ -473,10 +473,17 @@
                                 </connections>
                             </button>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="2rQ-jE-ihH">
-                                <rect key="frame" x="18" y="381" width="284" height="23"/>
+                                <rect key="frame" x="18" y="368" width="284" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="adjustVolume" destination="Kch-dK-gE5" eventType="valueChanged" id="EwB-5b-JuK"/>
+                                </connections>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="wXc-fk-pbg">
+                                <rect key="frame" x="18" y="392" width="284" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="adjustVolume2" destination="Kch-dK-gE5" eventType="valueChanged" id="Q5A-fH-CB2"/>
                                 </connections>
                             </slider>
                         </subviews>
@@ -497,6 +504,7 @@
                         <outlet property="btn_rewind" destination="G62-AV-dqw" id="Qef-tl-xz1"/>
                         <outlet property="iv_mediaBar" destination="ZAh-VU-b6y" id="ciu-fb-n9k"/>
                         <outlet property="sld_volumeControl" destination="2rQ-jE-ihH" id="LeC-m4-7TZ"/>
+                        <outlet property="sld_volumeControl2" destination="wXc-fk-pbg" id="Adr-df-fQp"/>
                     </connections>
                 </viewController>
             </objects>
@@ -573,6 +581,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/shAntiMeditationViewController.h"/>
             <relationships>
                 <relationship kind="action" name="adjustVolume"/>
+                <relationship kind="action" name="adjustVolume2"/>
                 <relationship kind="action" name="onFavoriteButtonPressed"/>
                 <relationship kind="action" name="onInfoButtonPressed"/>
                 <relationship kind="action" name="pauseAudio"/>
@@ -586,6 +595,7 @@
                 <relationship kind="outlet" name="btn_rewind" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="iv_mediaBar" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="sld_volumeControl" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="sld_volumeControl2" candidateClass="UISlider"/>
             </relationships>
         </class>
         <class className="shAntiSecondViewController" superclassName="UIViewController">

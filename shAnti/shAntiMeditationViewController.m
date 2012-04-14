@@ -15,12 +15,14 @@
 @implementation shAntiMeditationViewController
 @synthesize iv_mediaBar     = m_iv_mediaBar;
 @synthesize sld_volumeControl = m_sld_volumeControl;
+@synthesize sld_volumeControl2 = m_sld_volumeControl2;
 @synthesize btn_play        = m_btn_play;
 @synthesize btn_pause       = m_btn_pause;
 @synthesize btn_rewind      = m_btn_rewind;
 @synthesize btn_favorite    = m_btn_favorite;
 @synthesize btn_info        = m_btn_info;
 @synthesize audioPlayer     = m_audioPlayer;
+@synthesize audioPlayer2    = m_audioPlayer2;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -56,6 +58,24 @@
         [self.btn_play setHidden:YES];
     }
     
+    
+    NSURL *url2 = [NSURL fileURLWithPath:[[NSBundle mainBundle]
+                                         pathForResource:@"medVoice"
+                                         ofType:@"mp3"]];
+    
+    NSError *error2;
+    self.audioPlayer2 = [[AVAudioPlayer alloc]initWithContentsOfURL:url2 error:&error2];
+    if (error)
+    {
+        NSLog(@"Error in audioPlayer: %@", [error2 localizedDescription]);
+    } else {
+        self.audioPlayer2.delegate = self;
+        [self.audioPlayer2 prepareToPlay];
+        
+        // Hide the play button because we wil autoplay
+        [self.btn_play setHidden:YES];
+    }
+    
 }
 
 - (void)viewDidUnload
@@ -65,7 +85,9 @@
     
     self.iv_mediaBar = nil;
     self.sld_volumeControl = nil;
+    self.sld_volumeControl2 = nil;
     self.audioPlayer = nil;
+    self.audioPlayer2 = nil;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -94,6 +116,7 @@
     [self.btn_pause setHidden:NO];
     
     [self.audioPlayer play];
+    [self.audioPlayer2 play];
 }
 
 -(void)pauseAudio
@@ -129,6 +152,14 @@
     if (self.audioPlayer != nil)
     {
         self.audioPlayer.volume = self.sld_volumeControl.value;
+    }
+}
+
+-(void)adjustVolume2
+{
+    if (self.audioPlayer2 != nil)
+    {
+        self.audioPlayer2.volume = self.sld_volumeControl2.value;
     }
 }
 
