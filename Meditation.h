@@ -16,4 +16,5 @@
 @property (nonatomic,retain) NSString* voiceurl;
 @property (nonatomic,retain) NSString* musicurl;
 @property (nonatomic,retain) NSString* displayname;
+@property (nonatomic,retain) NSNumber* type;
 @end

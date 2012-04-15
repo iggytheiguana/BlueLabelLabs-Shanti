@@ -12,8 +12,8 @@
 
 @property (nonatomic,retain) NSNumber* datecompleted;
 @property (nonatomic,retain) NSNumber* datescheduled;
-@property (nonatomic,retain) NSNumber* meditationtypeid;
+@property (nonatomic,retain) NSNumber* meditationtypeid; //reference to a Meditation object id
 @property (nonatomic,retain) NSNumber* percentcompleted;
-@property (nonatomic,retain) NSNumber* state;
+@property (nonatomic,retain) NSNumber* state; //enumerated constant of type MeditationState (SCHEDULED,INPROGRESS,COMPLETED)
 @property (nonatomic,retain) NSNumber* userid;
 @end

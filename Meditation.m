@@ -15,4 +15,5 @@
 @dynamic musicurl;
 @dynamic displayname;
 @dynamic duration;
+@dynamic type; //this is an integer value pointing to a enumerated constant MeditationType (GROUP, MINDFULNESS, etc...)
 @end

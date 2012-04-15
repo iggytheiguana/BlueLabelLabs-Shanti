@@ -80,6 +80,7 @@
         <attribute name="musicurl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="numlikes" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="numpeople" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="voiceurl" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="meditationinstance" representedClassName="MeditationInstance" parentEntity="resource" syncable="YES">
@@ -135,9 +136,9 @@
         <element name="request" positionX="340" positionY="90" width="128" height="165"/>
         <element name="resource" positionX="160" positionY="414" width="128" height="135"/>
         <element name="TypeInstanceData" positionX="90" positionY="-342" width="128" height="105"/>
-        <element name="user" positionX="241" positionY="990" width="128" height="360"/>
+        <element name="user" positionX="250" positionY="1098" width="128" height="360"/>
         <element name="follow" positionX="-225" positionY="612" width="128" height="135"/>
         <element name="meditationinstance" positionX="196" positionY="900" width="128" height="135"/>
-        <element name="meditation" positionX="376" positionY="900" width="128" height="135"/>
+        <element name="meditation" positionX="376" positionY="900" width="128" height="150"/>
     </elements>
 </model>

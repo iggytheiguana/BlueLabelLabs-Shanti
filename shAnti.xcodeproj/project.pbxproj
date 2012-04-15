@@ -542,6 +542,7 @@
 		C5F5049A153AA17B002583E3 /* Meditation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Meditation.h; sourceTree = "<group>"; };
 		C5F5049B153AA17B002583E3 /* Meditation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Meditation.m; sourceTree = "<group>"; };
 		C5F5049D153AA22A002583E3 /* MeditationState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeditationState.h; sourceTree = "<group>"; };
+		C5F504A0153AA6E4002583E3 /* MeditationType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeditationType.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1090,6 +1091,7 @@
 				C5F5049A153AA17B002583E3 /* Meditation.h */,
 				C5F5049B153AA17B002583E3 /* Meditation.m */,
 				C5F5049D153AA22A002583E3 /* MeditationState.h */,
+				C5F504A0153AA6E4002583E3 /* MeditationType.h */,
 			);
 			name = Application;
 			sourceTree = "<group>";
