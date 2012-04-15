@@ -55,9 +55,6 @@
 		526C239B15398B89003008AB /* icon-note@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 526C239715398B89003008AB /* icon-note@2x.png */; };
 		526C239C15398B89003008AB /* icon-voice.png in Resources */ = {isa = PBXBuildFile; fileRef = 526C239815398B89003008AB /* icon-voice.png */; };
 		526C239D15398B89003008AB /* icon-voice@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 526C239915398B89003008AB /* icon-voice@2x.png */; };
-		526C23AC153A20E5003008AB /* Meditation.m in Sources */ = {isa = PBXBuildFile; fileRef = 526C23AB153A20E4003008AB /* Meditation.m */; };
-		526C23AF153A20F1003008AB /* ShantiUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 526C23AE153A20F1003008AB /* ShantiUser.m */; };
-		526C23B2153A2490003008AB /* Supporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 526C23B1153A2490003008AB /* Supporter.m */; };
 		526C23B5153A471E003008AB /* icon-heart-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 526C23B3153A471E003008AB /* icon-heart-selected.png */; };
 		526C23B6153A471E003008AB /* icon-heart-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 526C23B4153A471E003008AB /* icon-heart-selected@2x.png */; };
 		526C23B8153A4A5D003008AB /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 526C23B7153A4A5D003008AB /* EventKit.framework */; };
@@ -189,6 +186,9 @@
 		C50C62D51539EF9A000C0DD9 /* UIPromptAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = C50C62D01539EF9A000C0DD9 /* UIPromptAlertView.m */; };
 		C50C62D81539EFB4000C0DD9 /* UILoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = C50C62D71539EFB4000C0DD9 /* UILoginView.m */; };
 		C50C62DD1539F116000C0DD9 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C50C62DC1539F116000C0DD9 /* MBProgressHUD.m */; };
+		C5F50495153A9A2C002583E3 /* Follow.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F50494153A9A2C002583E3 /* Follow.m */; };
+		C5F50499153A9F82002583E3 /* MeditationInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F50498153A9F82002583E3 /* MeditationInstance.m */; };
+		C5F5049C153AA17C002583E3 /* Meditation.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F5049B153AA17B002583E3 /* Meditation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -249,12 +249,6 @@
 		526C239715398B89003008AB /* icon-note@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-note@2x.png"; sourceTree = "<group>"; };
 		526C239815398B89003008AB /* icon-voice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-voice.png"; sourceTree = "<group>"; };
 		526C239915398B89003008AB /* icon-voice@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-voice@2x.png"; sourceTree = "<group>"; };
-		526C23AA153A20E4003008AB /* Meditation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Meditation.h; sourceTree = "<group>"; };
-		526C23AB153A20E4003008AB /* Meditation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Meditation.m; sourceTree = "<group>"; };
-		526C23AD153A20F1003008AB /* ShantiUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShantiUser.h; sourceTree = "<group>"; };
-		526C23AE153A20F1003008AB /* ShantiUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShantiUser.m; sourceTree = "<group>"; };
-		526C23B0153A2490003008AB /* Supporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Supporter.h; sourceTree = "<group>"; };
-		526C23B1153A2490003008AB /* Supporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Supporter.m; sourceTree = "<group>"; };
 		526C23B3153A471E003008AB /* icon-heart-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-heart-selected.png"; sourceTree = "<group>"; };
 		526C23B4153A471E003008AB /* icon-heart-selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-heart-selected@2x.png"; sourceTree = "<group>"; };
 		526C23B7153A4A5D003008AB /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
@@ -541,6 +535,13 @@
 		C50C62D71539EFB4000C0DD9 /* UILoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UILoginView.m; sourceTree = "<group>"; };
 		C50C62DB1539F116000C0DD9 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		C50C62DC1539F116000C0DD9 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		C5F50493153A9A2C002583E3 /* Follow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Follow.h; sourceTree = "<group>"; };
+		C5F50494153A9A2C002583E3 /* Follow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Follow.m; sourceTree = "<group>"; };
+		C5F50497153A9F82002583E3 /* MeditationInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeditationInstance.h; sourceTree = "<group>"; };
+		C5F50498153A9F82002583E3 /* MeditationInstance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeditationInstance.m; sourceTree = "<group>"; };
+		C5F5049A153AA17B002583E3 /* Meditation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Meditation.h; sourceTree = "<group>"; };
+		C5F5049B153AA17B002583E3 /* Meditation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Meditation.m; sourceTree = "<group>"; };
+		C5F5049D153AA22A002583E3 /* MeditationState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeditationState.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -618,7 +619,6 @@
 		526C22C91538A8D8003008AB /* shAnti */ = {
 			isa = PBXGroup;
 			children = (
-				526C23A6153A1EFB003008AB /* Model */,
 				C50C62D91539F095000C0DD9 /* Externals */,
 				C50C62C61539EF3C000C0DD9 /* Views */,
 				C50C62C21539EEDA000C0DD9 /* Generic */,
@@ -695,19 +695,6 @@
 				526C23361538C784003008AB /* 189-plant@2x.png */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
-		};
-		526C23A6153A1EFB003008AB /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				526C23AA153A20E4003008AB /* Meditation.h */,
-				526C23AB153A20E4003008AB /* Meditation.m */,
-				526C23AD153A20F1003008AB /* ShantiUser.h */,
-				526C23AE153A20F1003008AB /* ShantiUser.m */,
-				526C23B0153A2490003008AB /* Supporter.h */,
-				526C23B1153A2490003008AB /* Supporter.m */,
-			);
-			name = Model;
 			sourceTree = "<group>";
 		};
 		C50C61131539BC96000C0DD9 /* Platform */ = {
@@ -1087,6 +1074,8 @@
 		C50C621D1539C126000C0DD9 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				C5F50493153A9A2C002583E3 /* Follow.h */,
+				C5F50494153A9A2C002583E3 /* Follow.m */,
 				C50C623D1539C48F000C0DD9 /* PlatformDataModel.xcdatamodeld */,
 				C50C622D1539C34A000C0DD9 /* Feed.h */,
 				C50C622E1539C34A000C0DD9 /* Feed.m */,
@@ -1096,6 +1085,11 @@
 				C50C62301539C34A000C0DD9 /* FeedData.m */,
 				C50C62401539C527000C0DD9 /* ApplicationSettings.h */,
 				C50C62411539C527000C0DD9 /* ApplicationSettings.m */,
+				C5F50497153A9F82002583E3 /* MeditationInstance.h */,
+				C5F50498153A9F82002583E3 /* MeditationInstance.m */,
+				C5F5049A153AA17B002583E3 /* Meditation.h */,
+				C5F5049B153AA17B002583E3 /* Meditation.m */,
+				C5F5049D153AA22A002583E3 /* MeditationState.h */,
 			);
 			name = Application;
 			sourceTree = "<group>";
@@ -1523,11 +1517,11 @@
 				C50C62D51539EF9A000C0DD9 /* UIPromptAlertView.m in Sources */,
 				C50C62D81539EFB4000C0DD9 /* UILoginView.m in Sources */,
 				C50C62DD1539F116000C0DD9 /* MBProgressHUD.m in Sources */,
-				526C23AC153A20E5003008AB /* Meditation.m in Sources */,
-				526C23AF153A20F1003008AB /* ShantiUser.m in Sources */,
-				526C23B2153A2490003008AB /* Supporter.m in Sources */,
 				52C34367153A6A870034D321 /* shAntiMindfulnessViewController.m in Sources */,
 				52C3436A153A6CFB0034D321 /* shAntiFavoritesViewController.m in Sources */,
+				C5F50495153A9A2C002583E3 /* Follow.m in Sources */,
+				C5F50499153A9F82002583E3 /* MeditationInstance.m in Sources */,
+				C5F5049C153AA17C002583E3 /* Meditation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

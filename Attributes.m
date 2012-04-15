@@ -104,3 +104,18 @@ NSString* const NUMBEROFUNREADCAPTIONS  =@"numberofunreadcaptions";
 NSString* const SHARINGLEVEL            =@"sharinglevel";
 NSString* const CONSEQUENTIALUPDATES    =@"consequentialupdates";
 
+
+ NSString* const DATECOMPLETED          =@"datecompleted";
+NSString* const DATESCHEDULED           =@"datescheduled";
+NSString* const MEDITATIONTYPEID        =@"meditationtypeid";
+ NSString* const PERCENTCOMPLETED       =@"percentcompleted";
+ NSString* const DURATION               =@"duration";
+ NSString* const MUSICURL               =@"musicurl";
+ NSString* const VOICEURL               =@"voiceurl";
+NSString* const NUMLIKES                =@"numlikes";
+ NSString* const NUMPEOPLE              =@"numpeople";
+ NSString* const FIRSTNAME              =@"firstname";
+ NSString* const LASTNAME               =@"lastname";
+NSString* const NUMGUIDEDCOMPLETED      =@"numguidedcompleted";
+ NSString* const NUMMINDFULNESSCOMPLETED=@"nummindfulnesscompleted";
+

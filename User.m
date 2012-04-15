@@ -13,27 +13,19 @@
 #import "Feed.h"
 #import "Attributes.h"
 @implementation User
-@dynamic email;
+
 @dynamic displayname;
-@dynamic numberofvotes;
+
 @dynamic thumbnailurl;
-@dynamic numberofcaptionslw;
-@dynamic numberofdraftscreatedlw;
-@dynamic numberofdraftsparticipated;
-@dynamic numberofpagespublished;
-@dynamic numberofphotoslw;
-@dynamic iseditor;
-@dynamic datebecameeditor;
-@dynamic numberofphotos;
-@dynamic numberofcaptions;
-@dynamic numberofdraftscreated;
-@dynamic maxweeklyparticipation;
-@dynamic sharinglevel;
-@dynamic username;
 @dynamic imageurl;
 @dynamic numberoffollowers;
 @dynamic numberfollowing;
-@dynamic numberofpoints;
+@dynamic firstname;
+@dynamic lastname;
+@dynamic username;
+@dynamic numguidedcomplete;
+@dynamic nummindfulnesscomplete;
+
 
 - (id) initFromJSONDictionary:(NSDictionary *)jsonDictionary {
     ResourceContext* resourceContext = [ResourceContext instance];
