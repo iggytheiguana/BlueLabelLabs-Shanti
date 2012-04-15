@@ -14,26 +14,9 @@
                     <view key="view" contentMode="scaleToFill" id="16">
                         <rect key="frame" x="0.0" y="20" width="320" height="411"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="First View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="20">
-                                <rect key="frame" x="54" y="98" width="212" height="43"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" bouncesZoom="NO" editable="NO" text="Loaded by the first view controller — an instance of shAntiFirstViewController — specified in the app delegate." textAlignment="center" id="21">
-                                <rect key="frame" x="20" y="181" width="280" height="88"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" size="system"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Feed" image="icon-globe2.png" id="7"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="653" y="-138"/>
@@ -46,26 +29,9 @@
                     <view key="view" contentMode="scaleToFill" id="17">
                         <rect key="frame" x="0.0" y="20" width="320" height="411"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Second View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="22">
-                                <rect key="frame" x="54" y="98" width="212" height="43"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" bouncesZoom="NO" editable="NO" text="Loaded by the second view controller — an instance of shAntiSecondViewController — specified in the app delegate." textAlignment="center" id="23">
-                                <rect key="frame" x="20" y="181" width="280" height="88"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" size="system"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Groups" image="icon-community.png" id="6"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="653" y="498"/>
@@ -325,7 +291,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="fzE-sc-KZn">
                         <nil key="title"/>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="RcC-fI-5z5">
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="CWf-Df-ac5">
                             <rect key="frame" x="10" y="7" width="300" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
@@ -333,18 +299,116 @@
                                 <segment title="Mindfulness"/>
                                 <segment title="Favorites"/>
                             </segments>
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="indexDidChangeForSegmentedControl:" destination="igC-Lt-NnA" eventType="valueChanged" id="vYc-PH-yQ8"/>
+                            </connections>
                         </segmentedControl>
                     </navigationItem>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="sgmt_segmentedControl" destination="CWf-Df-ac5" id="yrx-gU-IBG"/>
                         <outlet property="tbl_meditate" destination="Iho-w7-2Wx" id="Sq6-Af-U9t"/>
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1187" y="888"/>
+            <point key="canvasLocation" x="1173" y="768"/>
+        </scene>
+        <!--Sh Anti Mindfulness View Controller - Mindfulness View Controller-->
+        <scene sceneID="jYT-HH-HR2">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IZW-o0-BpY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController storyboardIdentifier="MindfulnessViewController" title="Mindfulness View Controller" id="pVD-e0-HLN" customClass="shAntiMindfulnessViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="2qp-Sb-Hgc">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Omw-fs-1pq">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="pVD-e0-HLN" id="1cu-YD-8pc"/>
+                            <outlet property="delegate" destination="pVD-e0-HLN" id="thn-MY-lSh"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="gyD-cU-Yt5">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="1" id="snF-z0-ZbF">
+                            <rect key="frame" x="10" y="7" width="300" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Guided"/>
+                                <segment title="Mindfulness"/>
+                                <segment title="Favorites"/>
+                            </segments>
+                            <connections>
+                                <action selector="indexDidChangeForSegmentedControl:" destination="pVD-e0-HLN" eventType="valueChanged" id="32d-pP-83p"/>
+                            </connections>
+                        </segmentedControl>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                    <connections>
+                        <outlet property="sgmt_segmentedControl" destination="snF-z0-ZbF" id="Izt-v7-aiu"/>
+                    </connections>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="1173" y="1390"/>
+        </scene>
+        <!--Sh Anti Favorites View Controller - Favorites View Controller-->
+        <scene sceneID="kzJ-pv-Y1I">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wZF-WL-4y4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController storyboardIdentifier="FavoritesViewController" title="Favorites View Controller" id="R9H-5F-UQG" customClass="shAntiFavoritesViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Unb-zY-lRP">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="aOc-hO-k6N">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="R9H-5F-UQG" id="4UH-78-dM6"/>
+                            <outlet property="delegate" destination="R9H-5F-UQG" id="QsX-b8-RO1"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="wnP-bO-Sqo">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="2" id="QwN-fE-fwx">
+                            <rect key="frame" x="10" y="7" width="300" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Guided"/>
+                                <segment title="Mindfulness"/>
+                                <segment title="Favorites"/>
+                            </segments>
+                            <connections>
+                                <action selector="indexDidChangeForSegmentedControl:" destination="R9H-5F-UQG" eventType="valueChanged" id="3Ho-7e-VFN"/>
+                            </connections>
+                        </segmentedControl>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                    <connections>
+                        <outlet property="sgmt_segmentedControl" destination="QwN-fE-fwx" id="fmF-SB-veI"/>
+                    </connections>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="1580" y="1390"/>
         </scene>
         <!--View Controller - Progress-->
         <scene sceneID="cS2-je-s9A">
@@ -357,7 +421,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Progress" image="icon-arrowup.png" id="PxS-ZB-3Rf"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
             </objects>
@@ -374,7 +437,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Support" image="icon-mail1.png" id="uBq-Ei-G24"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
             </objects>
@@ -465,6 +527,7 @@
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="selected" image="icon-heart-selected.png"/>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -523,7 +586,6 @@
                     <navigationItem key="navigationItem" title="Meditation" id="0Nh-DJ-OnG">
                         <barButtonItem key="rightBarButtonItem" image="icon-info.png" id="OPx-FA-7aO"/>
                     </navigationItem>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -540,7 +602,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1566" y="888"/>
+            <point key="canvasLocation" x="1580" y="768"/>
         </scene>
         <!--Navigation Controller - Meditate-->
         <scene sceneID="FvQ-U0-nO6">
@@ -548,7 +610,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Cl-wT-8rT" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="Xlm-Di-SI9" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Meditate" image="189-plant.png" id="skc-UX-3rg"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="blackOpaque" id="Vhs-Ta-ZjZ">
                         <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
@@ -566,7 +627,6 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14" sceneMemberID="firstResponder"/>
                 <tabBarController id="4" sceneMemberID="viewController">
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="5">
                         <rect key="frame" x="0.0" y="431" width="320" height="49"/>
@@ -591,6 +651,7 @@
         <image name="icon-community.png" width="26" height="19"/>
         <image name="icon-globe2.png" width="23" height="23"/>
         <image name="icon-heart-highlighted.png" width="24" height="18"/>
+        <image name="icon-heart-selected.png" width="24" height="18"/>
         <image name="icon-info.png" width="21" height="22"/>
         <image name="icon-mail1.png" width="31" height="25"/>
         <image name="icon-note.png" width="18" height="23"/>
@@ -602,12 +663,24 @@
         <image name="stock-photo-2038361-moon-meditation.jpg" width="380" height="253"/>
     </resources>
     <classes>
-        <class className="shAntiFirstViewController" superclassName="UIViewController">
+        <class className="BaseViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BaseViewController.h"/>
+        </class>
+        <class className="shAntiFavoritesViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/shAntiFavoritesViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="indexDidChangeForSegmentedControl:" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="sgmt_segmentedControl" candidateClass="UISegmentedControl"/>
+            </relationships>
+        </class>
+        <class className="shAntiFirstViewController" superclassName="BaseViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/shAntiFirstViewController.h"/>
         </class>
         <class className="shAntiMeditateViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/shAntiMeditateViewController.h"/>
             <relationships>
+                <relationship kind="action" name="indexDidChangeForSegmentedControl:" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="sgmt_segmentedControl" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="tbl_meditate" candidateClass="UITableView"/>
             </relationships>
         </class>
@@ -636,12 +709,19 @@
                 <relationship kind="outlet" name="sld_volumeControl2" candidateClass="UISlider"/>
             </relationships>
         </class>
-        <class className="shAntiSecondViewController" superclassName="UIViewController">
+        <class className="shAntiMindfulnessViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/shAntiMindfulnessViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="indexDidChangeForSegmentedControl:" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="sgmt_segmentedControl" candidateClass="UISegmentedControl"/>
+            </relationships>
+        </class>
+        <class className="shAntiSecondViewController" superclassName="BaseViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/shAntiSecondViewController.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>

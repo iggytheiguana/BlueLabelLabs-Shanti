@@ -24,4 +24,23 @@
 + (NSString *) formatTimeInterval:(NSTimeInterval)interval;
 
 + (NSDate*) addDays:(NSNumber*)daysToAdd toDate:(NSDate*)date;
+
+
++ (NSInteger) getYearComponentFromDate:(NSDate*)date;
++ (NSString*) getMonthComponentFromDate:(NSDate*)date abbreviated:(BOOL)abbriviated;
++ (NSString*) getWeekdayComponentFromDate:(NSDate*)date abbreviated:(BOOL)abbriviated;
++ (NSInteger) getDayComponentFromDate:(NSDate*)date;
++ (NSString*) getTimeFromDate:(NSDate*)date;
++ (NSInteger) getHourComponentFromDate:(NSDate*)date;
++ (NSString*) getPeriodComponentFromDate:(NSDate*)date;
++ (NSInteger) getMinuteComponentFromDate:(NSDate*)date;
++ (NSInteger) getSecondComponentFromDate:(NSDate*)date;
+
+
+
+
+
+
+
+
 @end

@@ -23,9 +23,12 @@
 @synthesize btn_info        = m_btn_info;
 @synthesize btn_music       = m_btn_music;
 @synthesize btn_voice       = m_btn_voice;
+@synthesize duration        = m_duration;
 @synthesize audioPlayerMusic     = m_audioPlayerMusic;
 @synthesize audioPlayerVoice    = m_audioPlayerVoice;
 
+
+#pragma mark - Initialization
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -106,10 +109,11 @@
     [self playAudio];
 }
 
-- (void)viewDidDisppear:(BOOL)animated {
-    [super viewDidDisappear:animated];
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
     
-    [self pauseAudio];
+    [self stopAudio];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -208,6 +212,7 @@
 
 -(void)onFavoriteButtonPressed
 {
+    [self.btn_favorite setSelected:!self.btn_favorite.selected];
 }
 
 -(void)onInfoButtonPressed

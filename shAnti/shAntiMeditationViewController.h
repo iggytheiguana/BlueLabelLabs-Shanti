@@ -21,6 +21,7 @@
     UIButton        *m_btn_music;
     UIButton        *m_btn_voice;
     
+    int             m_duration;
     
     AVAudioPlayer   *m_audioPlayerMusic;
     AVAudioPlayer   *m_audioPlayerVoice;
@@ -37,6 +38,8 @@
 @property (nonatomic, retain) IBOutlet UIButton         *btn_info;
 @property (nonatomic, retain) IBOutlet UIButton         *btn_music;
 @property (nonatomic, retain) IBOutlet UIButton         *btn_voice;
+
+@property                              int              duration;
 
 @property (nonatomic, retain) AVAudioPlayer             *audioPlayerMusic;
 @property (nonatomic, retain) AVAudioPlayer             *audioPlayerVoice;

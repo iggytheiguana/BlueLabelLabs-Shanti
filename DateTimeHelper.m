@@ -24,9 +24,6 @@
 
 + (NSDate*) addDays:(NSNumber*)daysToAdd toDate:(NSDate*)date 
 {
-   
-    
-    
     // set up date components
     NSDateComponents *components = [[[NSDateComponents alloc] init] autorelease];
     [components setDay:[daysToAdd intValue]];
@@ -155,12 +152,119 @@
         timeRemaining = [NSString stringWithFormat:@"closed!"];
     }
     
-    
-    
     [date1 release];
     [date2 release];
     return timeRemaining;
 }
 
+
+#pragma mark - Get Date Components
++ (NSInteger) getYearComponentFromDate:(NSDate*)date {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy"];
+    NSString *yearString = [formatter stringFromDate:date];
+    [formatter release];
+    
+    NSInteger year = [yearString integerValue];
+    
+    return year;
+}
+
++ (NSString*) getMonthComponentFromDate:(NSDate*)date abbreviated:(BOOL)abbriviated {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init]; 
+    [dateFormatter setTimeZone:[NSTimeZone localTimeZone]]; 
+    
+    if (abbriviated) {
+        [dateFormatter setDateFormat:@"MMM"];
+    }
+    else {
+        [dateFormatter setDateFormat:@"MMMM"]; 
+    }
+    
+    NSString *month = [dateFormatter stringFromDate:date]; 
+    [dateFormatter release];
+    
+    return month;
+}
+
++ (NSString*) getWeekdayComponentFromDate:(NSDate*)date abbreviated:(BOOL)abbriviated {    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init]; 
+    [dateFormatter setTimeZone:[NSTimeZone localTimeZone]]; 
+    
+    if (abbriviated) {
+        [dateFormatter setDateFormat:@"EEE"];
+    }
+    else {
+        [dateFormatter setDateFormat:@"EEEE"]; 
+    }
+    
+    NSString *day = [dateFormatter stringFromDate:date]; 
+    [dateFormatter release];
+    
+    return day;
+}
+
++ (NSInteger) getDayComponentFromDate:(NSDate*)date {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"dd"];
+    NSString *dayString = [formatter stringFromDate:date];
+    [formatter release];
+    
+    NSInteger day = [dayString integerValue];
+    
+    return day;
+}
+
++ (NSString*) getTimeFromDate:(NSDate*)date {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"hh:mm a"];
+    NSString *hour = [formatter stringFromDate:date];
+    [formatter release];
+    
+    return hour;
+}
+
++ (NSInteger) getHourComponentFromDate:(NSDate*)date {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"hh"];
+    NSString *hourString = [formatter stringFromDate:date];
+    [formatter release];
+    
+    NSInteger hour = [hourString integerValue];
+    
+    return hour;
+}
+
++ (NSString*) getPeriodComponentFromDate:(NSDate*)date {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init]; 
+    [dateFormatter setTimeZone:[NSTimeZone localTimeZone]]; 
+    [dateFormatter setDateFormat:@"a"];
+    NSString *period = [dateFormatter stringFromDate:date]; 
+    [dateFormatter release];
+    
+    return period;
+}
+
++ (NSInteger) getMinuteComponentFromDate:(NSDate*)date {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"mm"];
+    NSString *minuteString = [formatter stringFromDate:date];
+    [formatter release];
+    
+    NSInteger minute = [minuteString integerValue];
+    
+    return minute;
+}
+
++ (NSInteger) getSecondComponentFromDate:(NSDate*)date {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"ss"];
+    NSString *secondString = [formatter stringFromDate:date];
+    [formatter release];
+    
+    NSInteger second = [secondString integerValue];
+    
+    return second;
+}
 
 @end

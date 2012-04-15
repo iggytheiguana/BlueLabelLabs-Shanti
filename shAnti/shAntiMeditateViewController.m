@@ -8,13 +8,18 @@
 
 #import "shAntiMeditateViewController.h"
 #import "shAntiMeditationViewController.h"
+#import "shAntiMindfulnessViewController.h"
+#import "shAntiFavoritesViewController.h"
+#import "DateTimeHelper.h"
 #include <stdlib.h>
+
 
 @interface shAntiMeditateViewController ()
 
 @end
 
 @implementation shAntiMeditateViewController
+@synthesize sgmt_segmentedControl   = m_sgmt_segmentedControl;
 @synthesize tbl_meditate    = m_tbl_meditate;
 @synthesize deepBreathing   = m_deepBreathing;
 @synthesize bobyScan        = m_bobyScan;
@@ -24,7 +29,19 @@
 - (void)setupArrays {
     self.deepBreathing = [NSArray arrayWithObjects:@"2 min", @"5 min", @"10 min", nil];
     self.bobyScan = [NSArray arrayWithObjects:@"2 min", @"5 min", @"10 min", nil];
-    self.groupMeditation = [NSArray arrayWithObjects:@"30 min @ 3pm", @"30 min @ 4pm", @"30 min @ 5pm", nil];
+    self.groupMeditation = [[NSMutableArray alloc]init];
+    
+    //@"30 min @ 4pm", @"30 min @ 5pm", nil];
+    
+    NSDate *currentDate = [NSDate date];
+    
+    for (int i = 1; i <= 3; i++) {
+        NSTimeInterval interval = 60 * 60 * i;
+        NSDate *nextDate = [currentDate dateByAddingTimeInterval:interval];
+        int nextHour = [DateTimeHelper getHourComponentFromDate:nextDate];
+        NSString* nextHourPeriod = [DateTimeHelper getPeriodComponentFromDate:nextDate];
+        [self.groupMeditation addObject:[NSString stringWithFormat:@"30 min @ %d:00%@", nextHour, nextHourPeriod]];
+    }
 }
 
 
@@ -176,14 +193,65 @@
 }
 */
 
+#pragma mark - Segmented Control management
+- (IBAction)indexDidChangeForSegmentedControl:(UISegmentedControl*)segmentedControl {
+    NSUInteger index = segmentedControl.selectedSegmentIndex;
+    
+    if (index == 1) {
+        shAntiMindfulnessViewController *mindfulnessViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MindfulnessViewController"];
+        NSArray * theViewControllers = [NSArray arrayWithObject:mindfulnessViewController];
+        [self.navigationController setViewControllers:theViewControllers animated:NO];
+    }
+    else if (index == 2) {
+        shAntiFavoritesViewController *favoritesViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"FavoritesViewController"];
+        NSArray * theViewControllers = [NSArray arrayWithObject:favoritesViewController];
+        [self.navigationController setViewControllers:theViewControllers animated:NO];
+    }
+}
+
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    shAntiMeditationViewController *meditationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MeditationViewController"];
-    [self.navigationController pushViewController:meditationViewController animated:YES];
+    if (indexPath.section == 0) {
+        shAntiMeditationViewController *meditationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MeditationViewController"];
+        [meditationViewController setTitle:@"Deep Breathing"];
+        [meditationViewController setDuration:2];
+        [self.navigationController pushViewController:meditationViewController animated:YES];
+    }
+    else if (indexPath.section == 1) {
+        shAntiMeditationViewController *meditationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MeditationViewController"];
+        [meditationViewController setTitle:@"Boby Scan"];
+        [meditationViewController setDuration:2];
+        [self.navigationController pushViewController:meditationViewController animated:YES];
+    }
+    else {
+        // Create calendar event
+        EKEventStore *eventStore = [[[EKEventStore alloc] init] autorelease];
+        EKEvent *event = [EKEvent eventWithEventStore:eventStore];
+        event.title = @"shAnti Group Meditation";
+        event.location = @"shAnti for iPhone";
+        
+        event.startDate = [NSDate date];
+        event.endDate = [[NSDate alloc] initWithTimeInterval:(30 * 60) sinceDate:event.startDate];
+        [event addAlarm:[EKAlarm alarmWithRelativeOffset:(-15 * 60)]];
+        [event setCalendar:[eventStore defaultCalendarForNewEvents]];
+        
+        // Launch Event View Controller for editing and saving event
+        EKEventEditViewController *eventViewController = [[EKEventEditViewController alloc] init];
+        eventViewController.eventStore = eventStore;
+        eventViewController.event = event;
+        eventViewController.editViewDelegate = self;
+        [self presentModalViewController:eventViewController animated:YES];
+        [eventViewController release];
+    }
+}
+
+#pragma mark - EventKitUI delegate
+- (void)eventEditViewController:(EKEventEditViewController *)controller didCompleteWithAction:(EKEventEditViewAction)action {
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 @end
