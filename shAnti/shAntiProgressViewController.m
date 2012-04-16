@@ -66,6 +66,27 @@
     
 }
 
+- (NSString *)getTextForMeditationType:(NSNumber *)type {
+    NSString *retVal;
+    
+    if ([type intValue] == DEEPBREATHING) {
+        retVal = @"deep breathing";
+    }
+    else if ([type intValue] == BODYSCAN) {
+        retVal = @"body scan";
+    }
+    else if ([type intValue] == GROUP) {
+        retVal = @"group";
+    }
+    else if ([type intValue] == MINDFULNESS) {
+        retVal = @"mindfulness";
+    }
+    else {
+        retVal = @"";
+    }
+    
+    return retVal;
+}
 
 - (NSString *)getTextLabelStringForMeditationInstance:(NSNumber *)meditationInstanceID {
     ResourceContext *resourceContext = [ResourceContext instance];
@@ -75,10 +96,10 @@
     NSString *textLabelString;
     
     if ([meditationInstance.state intValue] == kCOMPLETED) {
-        textLabelString = [NSString stringWithFormat:@"Congrats! You completed a %@ meditation.", meditation.displayname];
+        textLabelString = [NSString stringWithFormat:@"Congrats! You completed a %@ %@ meditation.", meditation.displayname, [self getTextForMeditationType:meditation.type]];
     }
     else if ([meditationInstance.state intValue] == kINPROGRESS) {
-        textLabelString = [NSString stringWithFormat:@"You've completed only %d%% of a %@ meditation.", (int)([meditationInstance.percentcompleted doubleValue]*100), meditation.displayname];
+        textLabelString = [NSString stringWithFormat:@"You completed only %d%% of a %@ %@ meditation.", (int)([meditationInstance.percentcompleted doubleValue]*100), meditation.displayname, [self getTextForMeditationType:meditation.type]];
     }
     else {
         textLabelString = meditation.displayname;

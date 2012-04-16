@@ -171,7 +171,7 @@
         Meditation *meditation = [self.deepBreathing objectAtIndex:indexPath.row];
         
         cell.textLabel.text = meditation.displayname;
-        cell.detailTextLabel.text = [meditation.numlikes stringValue];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ likes", [meditation.numlikes stringValue]];
     }
     else if (indexPath.section == 1) {
         CellIdentifier = @"BodyScan";
@@ -185,7 +185,7 @@
         Meditation *meditation = [self.bobyScan objectAtIndex:indexPath.row];
         
         cell.textLabel.text = meditation.displayname;
-        cell.detailTextLabel.text = [meditation.numlikes stringValue];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ likes", [meditation.numlikes stringValue]];
     }
     else {
         CellIdentifier = @"GroupMeditation";
@@ -199,7 +199,7 @@
         Meditation *meditation = [self.groupMeditation objectAtIndex:indexPath.row];
         
         cell.textLabel.text = meditation.displayname;
-        cell.detailTextLabel.text = [meditation.numpeople stringValue];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ ppl", [meditation.numpeople stringValue]];
     }
     
     return cell;
