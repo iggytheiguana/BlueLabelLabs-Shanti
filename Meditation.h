@@ -17,4 +17,15 @@
 @property (nonatomic,retain) NSString* musicurl;
 @property (nonatomic,retain) NSString* displayname;
 @property (nonatomic,retain) NSNumber* type;
+
+
++ (Meditation*)createMeditationOfType:(NSNumber *)type
+                         withDuration:(NSNumber *)duration
+                      withDisplayname:(NSString *)displayname
+                         withMusicURL:(NSString *)musicURL
+                         withVoiceURL:(NSString *)voiceURL;
+
++ (NSArray*)loadDefaultMeditationsOfType:(NSNumber *)type;
+
+
 @end

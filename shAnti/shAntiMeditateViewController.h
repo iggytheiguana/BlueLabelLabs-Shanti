@@ -14,17 +14,17 @@
     UISegmentedControl  *m_sgmt_segmentedControl;
     UITableView         *m_tbl_meditate;
     
-    NSMutableArray         *m_deepBreathing;
-    NSMutableArray         *m_bobyScan;
-    NSMutableArray         *m_groupMeditation;
+    NSArray         *m_deepBreathing;
+    NSArray         *m_bobyScan;
+    NSArray         *m_groupMeditation;
 }
 
 @property (nonatomic, retain) IBOutlet UISegmentedControl   *sgmt_segmentedControl;
 @property (nonatomic, retain) IBOutlet UITableView          *tbl_meditate;
 
-@property (nonatomic, retain) NSMutableArray     *deepBreathing;
-@property (nonatomic, retain) NSMutableArray     *bobyScan;
-@property (nonatomic, retain) NSMutableArray     *groupMeditation;
+@property (nonatomic, retain) NSArray     *deepBreathing;
+@property (nonatomic, retain) NSArray     *bobyScan;
+@property (nonatomic, retain) NSArray     *groupMeditation;
 
 - (IBAction)indexDidChangeForSegmentedControl:(UISegmentedControl*)segmentedControl;
 

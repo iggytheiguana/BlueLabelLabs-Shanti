@@ -16,4 +16,10 @@
 @property (nonatomic,retain) NSNumber* percentcompleted;
 @property (nonatomic,retain) NSNumber* state; //enumerated constant of type MeditationState (SCHEDULED,INPROGRESS,COMPLETED)
 @property (nonatomic,retain) NSNumber* userid;
+
++ (MeditationInstance*)createInstanceOfMeditation:(NSNumber *)meditationID
+                                        forUserID:(NSNumber *)userID
+                                        withState:(NSNumber *)state
+                                withScheduledDate:(NSNumber *)scheduledDate;
+
 @end

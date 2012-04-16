@@ -410,37 +410,87 @@
             </objects>
             <point key="canvasLocation" x="1580" y="1390"/>
         </scene>
-        <!--View Controller - Progress-->
-        <scene sceneID="cS2-je-s9A">
+        <!--Sh Anti Progress View Controller - Progress View Controller-->
+        <scene sceneID="ZCt-53-Ir0">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="USO-IJ-Aka" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="wgU-QY-eo2" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="GTW-RD-oTo">
-                        <rect key="frame" x="0.0" y="20" width="320" height="411"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Progress" image="icon-arrowup.png" id="PxS-ZB-3Rf"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="acE-jU-zMY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController storyboardIdentifier="ProgressViewController" title="Progress View Controller" id="T8s-b9-lOI" customClass="shAntiProgressViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="avq-b4-x3v">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Progress" textLabel="Obx-u6-1h2" detailTextLabel="IvD-sL-cNw" style="IBUITableViewCellStyleSubtitle" id="DI9-QE-YK1">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Obx-u6-1h2">
+                                            <rect key="frame" x="10" y="2" width="38" height="22"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IvD-sL-cNw">
+                                            <rect key="frame" x="10" y="24" width="47" height="18"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="T8s-b9-lOI" id="mjg-k1-Lhp"/>
+                            <outlet property="delegate" destination="T8s-b9-lOI" id="sN0-ka-xPN"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Progress" image="icon-arrowup.png" id="vUz-wj-s4R"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                </viewController>
+                    <connections>
+                        <outlet property="tbl_progress" destination="avq-b4-x3v" id="kyN-kJ-YXK"/>
+                    </connections>
+                </tableViewController>
             </objects>
-            <point key="canvasLocation" x="653" y="1834"/>
+            <point key="canvasLocation" x="653" y="1820"/>
         </scene>
-        <!--View Controller - Support-->
-        <scene sceneID="eoT-6w-JkL">
+        <!--Table View Controller - Support-->
+        <scene sceneID="gdR-8z-OWG">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mO1-tz-PrQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController title="Support" id="yo9-KX-QrC" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5ER-88-Cq0">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ye5-kC-rDk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="4Xf-1q-uZo" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Xfp-dD-u55">
                         <rect key="frame" x="0.0" y="20" width="320" height="411"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Support" image="icon-mail1.png" id="uBq-Ei-G24"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="zK9-YK-X0g">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="4Xf-1q-uZo" id="IwJ-5E-if5"/>
+                            <outlet property="delegate" destination="4Xf-1q-uZo" id="Y5u-dr-VKl"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Support" image="icon-mail1.png" id="bln-vR-FL2"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                </viewController>
+                </tableViewController>
             </objects>
-            <point key="canvasLocation" x="653" y="2511"/>
+            <point key="canvasLocation" x="653" y="2507"/>
         </scene>
         <!--Sh Anti Meditation View Controller - Meditation-->
         <scene sceneID="tfL-vN-v5B">
@@ -456,11 +506,11 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="mediaBarBackground.png" id="ZAh-VU-b6y">
-                                <rect key="frame" x="0.0" y="328" width="320" height="88"/>
+                                <rect key="frame" x="0.0" y="320" width="320" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="G62-AV-dqw" userLabel="Button - Rewind">
-                                <rect key="frame" x="83" y="333" width="29" height="29"/>
+                                <rect key="frame" x="83" y="325" width="29" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="icon-rewind.png">
@@ -475,7 +525,7 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="2Pw-rZ-CiL" userLabel="Button - Play">
-                                <rect key="frame" x="148" y="333" width="29" height="29"/>
+                                <rect key="frame" x="148" y="325" width="29" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="icon-play.png">
@@ -490,7 +540,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="VHq-dJ-nt7" userLabel="Button - Pause">
-                                <rect key="frame" x="147" y="333" width="29" height="29"/>
+                                <rect key="frame" x="147" y="325" width="29" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="icon-pause.png">
@@ -505,7 +555,7 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="tdT-1R-SHA" userLabel="Button - Info">
-                                <rect key="frame" x="20" y="338" width="18" height="19"/>
+                                <rect key="frame" x="20" y="330" width="18" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal">
@@ -520,7 +570,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="zHb-CO-Qaf" userLabel="Button - Favorite">
-                                <rect key="frame" x="207" y="333" width="29" height="29"/>
+                                <rect key="frame" x="207" y="325" width="29" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="icon-heart-highlighted.png">
@@ -536,7 +586,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="center" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="I6Q-tM-sPt" userLabel="Button - Note">
-                                <rect key="frame" x="15" y="361" width="29" height="29"/>
+                                <rect key="frame" x="15" y="356" width="29" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="icon-note.png">
@@ -566,7 +616,7 @@
                                 </connections>
                             </button>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.42999999999999999" minValue="0.0" maxValue="1" id="2rQ-jE-ihH">
-                                <rect key="frame" x="52" y="365" width="250" height="23"/>
+                                <rect key="frame" x="52" y="360" width="250" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="adjustMusic" destination="Kch-dK-gE5" eventType="valueChanged" id="zvE-8z-eMs"/>
@@ -579,6 +629,19 @@
                                     <action selector="adjustVoice" destination="Kch-dK-gE5" eventType="valueChanged" id="OYB-d9-bUL"/>
                                 </connections>
                             </slider>
+                            <view alpha="0.5" contentMode="scaleToFill" id="SM6-5C-Hil" userLabel="View - TimeRemainingBackground">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Csg-Sx-6Qj" userLabel="Label - TimeRemaining">
+                                <rect key="frame" x="22" y="3" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -597,6 +660,7 @@
                         <outlet property="btn_rewind" destination="G62-AV-dqw" id="Qef-tl-xz1"/>
                         <outlet property="btn_voice" destination="2SK-Cy-iBp" id="9PE-M0-iv5"/>
                         <outlet property="iv_mediaBar" destination="ZAh-VU-b6y" id="ciu-fb-n9k"/>
+                        <outlet property="lbl_timeRemaining" destination="Csg-Sx-6Qj" id="dFA-wj-Vlb"/>
                         <outlet property="sld_volumeControl" destination="2rQ-jE-ihH" id="LeC-m4-7TZ"/>
                         <outlet property="sld_volumeControl2" destination="wXc-fk-pbg" id="Adr-df-fQp"/>
                     </connections>
@@ -637,8 +701,8 @@
                         <segue destination="2" kind="relationship" relationship="viewControllers" id="26"/>
                         <segue destination="3" kind="relationship" relationship="viewControllers" id="27"/>
                         <segue destination="Xlm-Di-SI9" kind="relationship" relationship="viewControllers" id="zuQ-Wb-L01"/>
-                        <segue destination="wgU-QY-eo2" kind="relationship" relationship="viewControllers" id="F98-5p-Wgc"/>
-                        <segue destination="yo9-KX-QrC" kind="relationship" relationship="viewControllers" id="joQ-il-jMq"/>
+                        <segue destination="T8s-b9-lOI" kind="relationship" relationship="viewControllers" id="Y7Z-Fx-RNu"/>
+                        <segue destination="4Xf-1q-uZo" kind="relationship" relationship="viewControllers" id="NtD-d7-zAK"/>
                     </connections>
                 </tabBarController>
             </objects>
@@ -705,6 +769,7 @@
                 <relationship kind="outlet" name="btn_rewind" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="btn_voice" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="iv_mediaBar" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="lbl_timeRemaining" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="sld_volumeControl" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="sld_volumeControl2" candidateClass="UISlider"/>
             </relationships>
@@ -714,6 +779,12 @@
             <relationships>
                 <relationship kind="action" name="indexDidChangeForSegmentedControl:" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="sgmt_segmentedControl" candidateClass="UISegmentedControl"/>
+            </relationships>
+        </class>
+        <class className="shAntiProgressViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/shAntiProgressViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tbl_progress" candidateClass="UITableView"/>
             </relationships>
         </class>
         <class className="shAntiSecondViewController" superclassName="BaseViewController">

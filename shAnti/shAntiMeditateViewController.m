@@ -11,8 +11,10 @@
 #import "shAntiMindfulnessViewController.h"
 #import "shAntiFavoritesViewController.h"
 #import "DateTimeHelper.h"
-#include <stdlib.h>
-
+#import "Meditation.h"
+#import "MeditationInstance.h"
+#import "MeditationType.h"
+#import "MeditationState.h"
 
 @interface shAntiMeditateViewController ()
 
@@ -27,7 +29,7 @@
 
 #pragma mark - Properties
 - (void)setupArrays {
-    self.deepBreathing = [NSArray arrayWithObjects:@"2 min", @"5 min", @"10 min", nil];
+    /*self.deepBreathing = [NSArray arrayWithObjects:@"2 min", @"5 min", @"10 min", nil];
     self.bobyScan = [NSArray arrayWithObjects:@"2 min", @"5 min", @"10 min", nil];
     self.groupMeditation = [[NSMutableArray alloc]init];
     
@@ -41,7 +43,12 @@
         int nextHour = [DateTimeHelper getHourComponentFromDate:nextDate];
         NSString* nextHourPeriod = [DateTimeHelper getPeriodComponentFromDate:nextDate];
         [self.groupMeditation addObject:[NSString stringWithFormat:@"30 min @ %d:00%@", nextHour, nextHourPeriod]];
-    }
+    }*/
+    
+    self.deepBreathing = [Meditation loadDefaultMeditationsOfType:[NSNumber numberWithInt:DEEPBREATHING]];
+    self.bobyScan = [Meditation loadDefaultMeditationsOfType:[NSNumber numberWithInt:BODYSCAN]];
+    self.groupMeditation = [Meditation loadDefaultMeditationsOfType:[NSNumber numberWithInt:GROUP]];
+    
 }
 
 
@@ -111,7 +118,7 @@
     NSString *CellIdentifier;
     UITableViewCell *cell;
     
-    if (indexPath.section == 0) {
+    /*if (indexPath.section == 0) {
         CellIdentifier = @"DeepBreathing";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
@@ -149,6 +156,50 @@
         cell.textLabel.text = [self.groupMeditation objectAtIndex:indexPath.row];
         int numPeople = arc4random() % 10;
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%d ppl", numPeople];
+    }*/
+    
+    
+    if (indexPath.section == 0) {
+        CellIdentifier = @"DeepBreathing";
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        // Configure the cell...
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+        }
+        
+        Meditation *meditation = [self.deepBreathing objectAtIndex:indexPath.row];
+        
+        cell.textLabel.text = meditation.displayname;
+        cell.detailTextLabel.text = [meditation.numlikes stringValue];
+    }
+    else if (indexPath.section == 1) {
+        CellIdentifier = @"BodyScan";
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        // Configure the cell...
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+        }
+        
+        Meditation *meditation = [self.bobyScan objectAtIndex:indexPath.row];
+        
+        cell.textLabel.text = meditation.displayname;
+        cell.detailTextLabel.text = [meditation.numlikes stringValue];
+    }
+    else {
+        CellIdentifier = @"GroupMeditation";
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        // Configure the cell...
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+        }
+        
+        Meditation *meditation = [self.groupMeditation objectAtIndex:indexPath.row];
+        
+        cell.textLabel.text = meditation.displayname;
+        cell.detailTextLabel.text = [meditation.numpeople stringValue];
     }
     
     return cell;
@@ -216,26 +267,61 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.section == 0) {
+        Meditation *meditation = [self.deepBreathing objectAtIndex:indexPath.row];
+        
+        // Create a new meditation instance
+        MeditationInstance* meditationInstance = [MeditationInstance createInstanceOfMeditation:meditation.objectid forUserID:nil withState:[NSNumber numberWithInt:kINPROGRESS] withScheduledDate:[NSNumber numberWithDouble:[[NSDate date] timeIntervalSinceNow]]];
+        
+        // Save new meditation instance
+        ResourceContext* resourceContext = [ResourceContext instance];
+        [resourceContext save:NO onFinishCallback:nil trackProgressWith:nil];
+        
         shAntiMeditationViewController *meditationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MeditationViewController"];
         [meditationViewController setTitle:@"Deep Breathing"];
-        [meditationViewController setDuration:2];
+        //[meditationViewController setDuration:[meditation.duration intValue]];
+        [meditationViewController setDuration:10];
         [self.navigationController pushViewController:meditationViewController animated:YES];
     }
     else if (indexPath.section == 1) {
+        Meditation *meditation = [self.bobyScan objectAtIndex:indexPath.row];
+        
+        // Create a new meditation instance
+        MeditationInstance* meditationInstance = [MeditationInstance createInstanceOfMeditation:meditation.objectid forUserID:nil withState:[NSNumber numberWithInt:kINPROGRESS] withScheduledDate:[NSNumber numberWithDouble:[[NSDate date] timeIntervalSinceNow]]];
+        
+        // Save new meditation instance
+        ResourceContext* resourceContext = [ResourceContext instance];
+        [resourceContext save:NO onFinishCallback:nil trackProgressWith:nil];
+        
         shAntiMeditationViewController *meditationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MeditationViewController"];
         [meditationViewController setTitle:@"Boby Scan"];
-        [meditationViewController setDuration:2];
+        [meditationViewController setDuration:[meditation.duration intValue]];
         [self.navigationController pushViewController:meditationViewController animated:YES];
     }
     else {
+        // Create the scheduled date of the meditation
+        NSDateComponents *time = [[NSCalendar currentCalendar]
+                                  components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit | NSHourCalendarUnit
+                                  fromDate:[NSDate date]];
+        NSInteger hour = [time hour];
+        [time setHour:(hour + indexPath.row + 1)];
+        NSDate *startDate = [[NSCalendar currentCalendar] dateFromComponents:time];
+        
+        // Create a new meditation instance
+        Meditation *meditation = [self.groupMeditation objectAtIndex:indexPath.row];
+        MeditationInstance* meditationInstance = [MeditationInstance createInstanceOfMeditation:meditation.objectid forUserID:nil withState:[NSNumber numberWithInt:kSCHEDULED] withScheduledDate:[NSNumber numberWithDouble:[startDate timeIntervalSinceNow]]];
+        
+        // Save new meditation instance
+        ResourceContext* resourceContext = [ResourceContext instance];
+        [resourceContext save:NO onFinishCallback:nil trackProgressWith:nil];
+        
         // Create calendar event
         EKEventStore *eventStore = [[[EKEventStore alloc] init] autorelease];
         EKEvent *event = [EKEvent eventWithEventStore:eventStore];
         event.title = @"shAnti Group Meditation";
         event.location = @"shAnti for iPhone";
         
-        event.startDate = [NSDate date];
-        event.endDate = [[NSDate alloc] initWithTimeInterval:(30 * 60) sinceDate:event.startDate];
+        event.startDate = startDate;
+        event.endDate = [[NSDate alloc] initWithTimeInterval:[meditation.duration intValue] sinceDate:event.startDate];
         [event addAlarm:[EKAlarm alarmWithRelativeOffset:(-15 * 60)]];
         [event setCalendar:[eventStore defaultCalendarForNewEvents]];
         

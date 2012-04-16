@@ -20,8 +20,13 @@
     UIButton        *m_btn_info;
     UIButton        *m_btn_music;
     UIButton        *m_btn_voice;
+    UILabel         *m_lbl_timeRemaining;
     
+    NSNumber        *m_meditationID;
     int             m_duration;
+    NSTimer         *m_playbackTimer;
+    NSDate          *m_pauseStartDate;
+    NSDate          *m_previousFiringDate;
     
     AVAudioPlayer   *m_audioPlayerMusic;
     AVAudioPlayer   *m_audioPlayerVoice;
@@ -38,8 +43,13 @@
 @property (nonatomic, retain) IBOutlet UIButton         *btn_info;
 @property (nonatomic, retain) IBOutlet UIButton         *btn_music;
 @property (nonatomic, retain) IBOutlet UIButton         *btn_voice;
+@property (nonatomic, retain) IBOutlet UILabel          *lbl_timeRemaining;
 
+@property (nonatomic, retain)          NSNumber         *meditationID;
 @property                              int              duration;
+@property (nonatomic, retain)          NSTimer          *playbackTimer;
+@property (nonatomic, retain)          NSDate           *pauseStartDate;
+@property (nonatomic, retain)          NSDate           *previousFiringDate;
 
 @property (nonatomic, retain) AVAudioPlayer             *audioPlayerMusic;
 @property (nonatomic, retain) AVAudioPlayer             *audioPlayerVoice;

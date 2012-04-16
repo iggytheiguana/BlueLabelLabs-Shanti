@@ -58,6 +58,7 @@
 		526C23B5153A471E003008AB /* icon-heart-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 526C23B3153A471E003008AB /* icon-heart-selected.png */; };
 		526C23B6153A471E003008AB /* icon-heart-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 526C23B4153A471E003008AB /* icon-heart-selected@2x.png */; };
 		526C23B8153A4A5D003008AB /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 526C23B7153A4A5D003008AB /* EventKit.framework */; };
+		5271AFF4153B930800E08223 /* shAntiProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5271AFF3153B930800E08223 /* shAntiProgressViewController.m */; };
 		52C34363153A57D70034D321 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C34362153A57D70034D321 /* EventKitUI.framework */; };
 		52C34367153A6A870034D321 /* shAntiMindfulnessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C34366153A6A870034D321 /* shAntiMindfulnessViewController.m */; };
 		52C3436A153A6CFB0034D321 /* shAntiFavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C34369153A6CFB0034D321 /* shAntiFavoritesViewController.m */; };
@@ -252,6 +253,8 @@
 		526C23B3153A471E003008AB /* icon-heart-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-heart-selected.png"; sourceTree = "<group>"; };
 		526C23B4153A471E003008AB /* icon-heart-selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-heart-selected@2x.png"; sourceTree = "<group>"; };
 		526C23B7153A4A5D003008AB /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		5271AFF2153B930800E08223 /* shAntiProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shAntiProgressViewController.h; sourceTree = "<group>"; };
+		5271AFF3153B930800E08223 /* shAntiProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = shAntiProgressViewController.m; sourceTree = "<group>"; };
 		52C34362153A57D70034D321 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
 		52C34365153A6A870034D321 /* shAntiMindfulnessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shAntiMindfulnessViewController.h; sourceTree = "<group>"; };
 		52C34366153A6A870034D321 /* shAntiMindfulnessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = shAntiMindfulnessViewController.m; sourceTree = "<group>"; };
@@ -640,6 +643,8 @@
 				52C34366153A6A870034D321 /* shAntiMindfulnessViewController.m */,
 				52C34368153A6CFB0034D321 /* shAntiFavoritesViewController.h */,
 				52C34369153A6CFB0034D321 /* shAntiFavoritesViewController.m */,
+				5271AFF2153B930800E08223 /* shAntiProgressViewController.h */,
+				5271AFF3153B930800E08223 /* shAntiProgressViewController.m */,
 				526C22CA1538A8D8003008AB /* Supporting Files */,
 			);
 			path = shAnti;
@@ -1524,6 +1529,7 @@
 				C5F50495153A9A2C002583E3 /* Follow.m in Sources */,
 				C5F50499153A9F82002583E3 /* MeditationInstance.m in Sources */,
 				C5F5049C153AA17C002583E3 /* Meditation.m in Sources */,
+				5271AFF4153B930800E08223 /* shAntiProgressViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

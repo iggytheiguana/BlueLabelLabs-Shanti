@@ -7,6 +7,7 @@
 //
 
 #import "MeditationInstance.h"
+#import "Meditation.h"
 
 @implementation MeditationInstance
 @dynamic datecompleted;
@@ -15,4 +16,25 @@
 @dynamic percentcompleted;
 @dynamic state;
 @dynamic userid;
+
+//creates a Meditation instance
++ (MeditationInstance*)createInstanceOfMeditation:(NSNumber *)meditationID
+                                        forUserID:(NSNumber *)userID
+                                        withState:(NSNumber *)state
+                                withScheduledDate:(NSNumber *)scheduledDate
+{
+    ResourceContext* resourceContext = [ResourceContext instance];
+    MeditationInstance* retVal = (MeditationInstance*) [Resource createInstanceOfType:MEDITATIONINSTANCE withResourceContext:resourceContext];
+    
+    retVal.meditationtypeid = meditationID;
+    retVal.userid = userID;
+    retVal.state = state;
+    retVal.datescheduled = scheduledDate;
+    retVal.datecompleted = [NSNumber numberWithDouble:[[NSDate date] timeIntervalSinceReferenceDate]];
+    retVal.percentcompleted = nil;
+    
+    return  retVal;
+}
+
+
 @end

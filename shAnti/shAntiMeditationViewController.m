@@ -7,6 +7,8 @@
 //
 
 #import "shAntiMeditationViewController.h"
+#import "MeditationState.h"
+#import "MeditationInstance.h"
 
 @interface shAntiMeditationViewController ()
 
@@ -23,8 +25,13 @@
 @synthesize btn_info        = m_btn_info;
 @synthesize btn_music       = m_btn_music;
 @synthesize btn_voice       = m_btn_voice;
+@synthesize lbl_timeRemaining   = m_lbl_timeRemaining;
+@synthesize meditationID    = m_meditationID;
 @synthesize duration        = m_duration;
-@synthesize audioPlayerMusic     = m_audioPlayerMusic;
+@synthesize playbackTimer   = m_playbackTimer;
+@synthesize pauseStartDate      = m_pauseStartDate;
+@synthesize previousFiringDate  = m_previousFiringDate;
+@synthesize audioPlayerMusic    = m_audioPlayerMusic;
 @synthesize audioPlayerVoice    = m_audioPlayerVoice;
 
 
@@ -98,13 +105,24 @@
     self.btn_info = nil;
     self.btn_music = nil;
     self.btn_voice = nil;
+    self.lbl_timeRemaining = nil;
     
     self.audioPlayerMusic = nil;
     self.audioPlayerVoice = nil;
+    
+    [self.playbackTimer invalidate];
+    self.playbackTimer = nil;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
+    // Setup a timer to track playtime and limit it to the duration specified by the meditation object
+    self.playbackTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                              target:self
+                                                            selector:@selector(managePlayBackDuration)
+                                                            userInfo:nil
+                                                             repeats:YES];
     
     [self playAudio];
 }
@@ -112,6 +130,12 @@
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    
+    // Determine if the meditaiton has completed fully
+    NSTimeInterval timeLeft = self.duration - self.audioPlayerMusic.currentTime;
+    if (timeLeft > 0.5) {
+        [self meditationDidFinishWithState:[NSNumber numberWithInt:kINPROGRESS]];
+    }
     
     [self stopAudio];
 }
@@ -131,6 +155,10 @@
     
     [self.audioPlayerMusic play];
     [self.audioPlayerVoice play];
+    
+    // Start/Resume the playback timer
+    float pauseTime = -1*[self.pauseStartDate timeIntervalSinceNow];
+    [self.playbackTimer setFireDate:[self.previousFiringDate initWithTimeInterval:pauseTime sinceDate:self.previousFiringDate]];
 }
 
 -(void)pauseAudio
@@ -141,16 +169,43 @@
     
     [self.audioPlayerMusic pause];
     [self.audioPlayerVoice pause];
+    
+    // Pause the playback timer
+    self.pauseStartDate = [[NSDate dateWithTimeIntervalSinceNow:0] retain];
+    self.previousFiringDate = [self.playbackTimer fireDate];
+    [self.playbackTimer setFireDate:[NSDate distantFuture]];
 }
 
 -(void)stopAudio
 {
+    [self.audioPlayerMusic stop];
+    [self.audioPlayerVoice stop];
+    
+    // Stop the playback timer
+    self.pauseStartDate = [[NSDate dateWithTimeIntervalSinceNow:0] retain];
+    self.previousFiringDate = [self.playbackTimer fireDate];
+    [self.playbackTimer setFireDate:[NSDate distantFuture]];
+    
     // Hide the pause button, and show the play button
     [self.btn_pause setHidden:YES];
     [self.btn_play setHidden:NO];
     
-    [self.audioPlayerMusic stop];
-    [self.audioPlayerVoice stop];
+    // reset the timer labels to their defaults
+    int minutesLeft = floor(self.duration/60);
+    int secondsLeft = trunc(self.duration - minutesLeft * 60);
+    int minutesDuration = floor(self.duration/60);
+    int secondsDuration = trunc(self.duration - minutesDuration * 60);
+    self.lbl_timeRemaining.text = [NSString stringWithFormat:@"%d:%02d / %d:%02d", minutesLeft, secondsLeft, minutesDuration, secondsDuration];
+    
+    // Get players ready for playing again
+    [self.audioPlayerMusic setCurrentTime:0];
+    [self.audioPlayerVoice setCurrentTime:0];
+    [self.audioPlayerMusic prepareToPlay];
+    [self.audioPlayerVoice prepareToPlay];
+    self.audioPlayerMusic.volume = 0.43;
+    self.sld_volumeControl.value = 0.43;
+    self.audioPlayerVoice.volume = 0.43;
+    self.sld_volumeControl2.value = 0.43;
 }
 
 
@@ -213,12 +268,60 @@
 -(void)onFavoriteButtonPressed
 {
     [self.btn_favorite setSelected:!self.btn_favorite.selected];
+    
 }
 
 -(void)onInfoButtonPressed
 {
 }
-     
+
+
+#pragma mark - AVAudioPlayer Playback Duration Managment
+- (void)meditationDidFinishWithState:(NSNumber *)state {
+    ResourceContext *resourceContext = [ResourceContext instance];
+    MeditationInstance *meditationInstance = (MeditationInstance *)[resourceContext resourceWithType:MEDITATIONINSTANCE withID:self.meditationID];
+    
+    if ([state intValue] == kCOMPLETED) {
+        // Meditation fisished its full specified duration
+        // Update properties of meditation instance
+        meditationInstance.state = state;
+        meditationInstance.percentcompleted = [NSNumber numberWithDouble:1.00];
+        meditationInstance.datecompleted = [NSDate date];
+    }
+    else {
+        // Meditation was stopped before full specified duration met
+        // Update properties of meditation instance
+        meditationInstance.state = state;
+        
+        NSTimeInterval timeLeft = self.duration - self.audioPlayerMusic.currentTime;
+        double percentComplete = timeLeft / self.duration;
+        meditationInstance.percentcompleted = [NSNumber numberWithDouble:percentComplete];
+    }
+}
+
+- (void)managePlayBackDuration {
+    NSTimeInterval timeLeft = self.duration - self.audioPlayerMusic.currentTime;
+    
+    int minutesLeft = floor(timeLeft/60);
+    int secondsLeft = trunc(timeLeft - minutesLeft * 60);
+    
+    int minutesDuration = floor(self.duration/60);
+    int secondsDuration = trunc(self.duration - minutesDuration * 60);
+    
+    // update your UI with time remaining
+    self.lbl_timeRemaining.text = [NSString stringWithFormat:@"%d:%02d / %d:%02d", minutesLeft, secondsLeft, minutesDuration, secondsDuration];
+    
+    if (timeLeft < 0.5) {
+        // Stop the meditation when the specified duration has been met
+        [self stopAudio];
+        [self meditationDidFinishWithState:[NSNumber numberWithInt:kCOMPLETED]];
+    }
+    else if (timeLeft < 7.5) {
+        // Fade out the volume as we reach the specified duration
+        self.audioPlayerVoice.volume = self.audioPlayerVoice.volume/2.0;
+        self.audioPlayerMusic.volume = self.audioPlayerMusic.volume/2.0;
+    }
+}
      
 #pragma mark - AVAudioPlayer Delegate Methods
 -(void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
