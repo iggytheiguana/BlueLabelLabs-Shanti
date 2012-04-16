@@ -319,7 +319,7 @@
     
     if (timeLeft < 0.5) {
         // Stop the meditation when the specified duration has been met
-        [self stopAudio];
+        [self pauseAudio];
         [self meditationDidFinishWithState:[NSNumber numberWithInt:kCOMPLETED]];
     }
     else if (timeLeft < 7.5) {
