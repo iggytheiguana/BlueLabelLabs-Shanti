@@ -78,7 +78,7 @@
         textLabelString = [NSString stringWithFormat:@"Congrats! You completed a %@ meditation.", meditation.displayname];
     }
     else if ([meditationInstance.state intValue] == kINPROGRESS) {
-        textLabelString = [NSString stringWithFormat:@"You've completed only %d of a %@ meditation.", (int)([meditationInstance.percentcompleted doubleValue]*100), meditation.displayname];
+        textLabelString = [NSString stringWithFormat:@"You've completed only %d%% of a %@ meditation.", (int)([meditationInstance.percentcompleted doubleValue]*100), meditation.displayname];
     }
     else {
         textLabelString = meditation.displayname;
