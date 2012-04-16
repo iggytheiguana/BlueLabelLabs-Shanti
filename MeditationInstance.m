@@ -30,7 +30,7 @@
     retVal.userid = userID;
     retVal.state = state;
     retVal.datescheduled = scheduledDate;
-    retVal.datecompleted = [NSNumber numberWithDouble:[[NSDate date] timeIntervalSinceReferenceDate]];
+    retVal.datecompleted = [NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]];
     retVal.percentcompleted = nil;
     
     return  retVal;

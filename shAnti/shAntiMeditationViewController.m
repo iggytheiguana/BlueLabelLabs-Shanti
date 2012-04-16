@@ -9,6 +9,8 @@
 #import "shAntiMeditationViewController.h"
 #import "MeditationState.h"
 #import "MeditationInstance.h"
+#import "DateTimeHelper.h"
+
 
 @interface shAntiMeditationViewController ()
 
@@ -287,7 +289,7 @@
         // Update properties of meditation instance
         meditationInstance.state = state;
         meditationInstance.percentcompleted = [NSNumber numberWithDouble:1.00];
-        meditationInstance.datecompleted = [NSDate date];
+        meditationInstance.datecompleted = [NSNumber numberWithDouble:[[NSDate date]timeIntervalSince1970]];
     }
     else {
         // Meditation was stopped before full specified duration met
