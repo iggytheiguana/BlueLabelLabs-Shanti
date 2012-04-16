@@ -15,24 +15,25 @@
 @end
 
 @implementation shAntiMeditationViewController
-@synthesize iv_mediaBar     = m_iv_mediaBar;
-@synthesize sld_volumeControl = m_sld_volumeControl;
-@synthesize sld_volumeControl2 = m_sld_volumeControl2;
-@synthesize btn_play        = m_btn_play;
-@synthesize btn_pause       = m_btn_pause;
-@synthesize btn_rewind      = m_btn_rewind;
-@synthesize btn_favorite    = m_btn_favorite;
-@synthesize btn_info        = m_btn_info;
-@synthesize btn_music       = m_btn_music;
-@synthesize btn_voice       = m_btn_voice;
-@synthesize lbl_timeRemaining   = m_lbl_timeRemaining;
-@synthesize meditationID    = m_meditationID;
-@synthesize duration        = m_duration;
-@synthesize playbackTimer   = m_playbackTimer;
-@synthesize pauseStartDate      = m_pauseStartDate;
-@synthesize previousFiringDate  = m_previousFiringDate;
-@synthesize audioPlayerMusic    = m_audioPlayerMusic;
-@synthesize audioPlayerVoice    = m_audioPlayerVoice;
+@synthesize iv_mediaBar             = m_iv_mediaBar;
+@synthesize sld_volumeControl       = m_sld_volumeControl;
+@synthesize sld_volumeControl2      = m_sld_volumeControl2;
+@synthesize btn_play                = m_btn_play;
+@synthesize btn_pause               = m_btn_pause;
+@synthesize btn_rewind              = m_btn_rewind;
+@synthesize btn_favorite            = m_btn_favorite;
+@synthesize btn_info                = m_btn_info;
+@synthesize btn_music               = m_btn_music;
+@synthesize btn_voice               = m_btn_voice;
+@synthesize lbl_timeRemaining       = m_lbl_timeRemaining;
+@synthesize meditationID            = m_meditationID;
+@synthesize meditationInstanceID    = m_meditationInstanceID;
+@synthesize duration                = m_duration;
+@synthesize playbackTimer           = m_playbackTimer;
+@synthesize pauseStartDate          = m_pauseStartDate;
+@synthesize previousFiringDate      = m_previousFiringDate;
+@synthesize audioPlayerMusic        = m_audioPlayerMusic;
+@synthesize audioPlayerVoice        = m_audioPlayerVoice;
 
 
 #pragma mark - Initialization
@@ -297,6 +298,8 @@
         double percentComplete = timeLeft / self.duration;
         meditationInstance.percentcompleted = [NSNumber numberWithDouble:percentComplete];
     }
+    
+    [resourceContext save:NO onFinishCallback:nil trackProgressWith:nil];
 }
 
 - (void)managePlayBackDuration {

@@ -276,8 +276,9 @@
 - (void) controller:(NSFetchedResultsController *)controller 
     didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath 
       forChangeType:(NSFetchedResultsChangeType)type 
-       newIndexPath:(NSIndexPath *)newIndexPath {
-    
+       newIndexPath:(NSIndexPath *)newIndexPath
+{
+    [self.tbl_progress reloadData];
 }
 
 @end

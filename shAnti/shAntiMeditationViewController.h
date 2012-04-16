@@ -23,6 +23,7 @@
     UILabel         *m_lbl_timeRemaining;
     
     NSNumber        *m_meditationID;
+    NSNumber        *m_meditationInstanceID;
     int             m_duration;
     NSTimer         *m_playbackTimer;
     NSDate          *m_pauseStartDate;
@@ -46,6 +47,7 @@
 @property (nonatomic, retain) IBOutlet UILabel          *lbl_timeRemaining;
 
 @property (nonatomic, retain)          NSNumber         *meditationID;
+@property (nonatomic, retain)          NSNumber         *meditationInstanceID;
 @property                              int              duration;
 @property (nonatomic, retain)          NSTimer          *playbackTimer;
 @property (nonatomic, retain)          NSDate           *pauseStartDate;
