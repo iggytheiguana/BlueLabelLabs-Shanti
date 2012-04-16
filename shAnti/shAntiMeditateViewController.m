@@ -278,6 +278,7 @@
         
         shAntiMeditationViewController *meditationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MeditationViewController"];
         [meditationViewController setTitle:@"Deep Breathing"];
+        meditationViewController.meditationInstanceID = meditationInstance.objectid;
         //[meditationViewController setDuration:[meditation.duration intValue]];
         [meditationViewController setDuration:10];
         [self.navigationController pushViewController:meditationViewController animated:YES];
@@ -294,6 +295,7 @@
         
         shAntiMeditationViewController *meditationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MeditationViewController"];
         [meditationViewController setTitle:@"Boby Scan"];
+        meditationViewController.meditationInstanceID = meditationInstance.objectid;
         [meditationViewController setDuration:[meditation.duration intValue]];
         [self.navigationController pushViewController:meditationViewController animated:YES];
     }

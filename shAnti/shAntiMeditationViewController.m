@@ -28,7 +28,6 @@
 @synthesize btn_music               = m_btn_music;
 @synthesize btn_voice               = m_btn_voice;
 @synthesize lbl_timeRemaining       = m_lbl_timeRemaining;
-@synthesize meditationID            = m_meditationID;
 @synthesize meditationInstanceID    = m_meditationInstanceID;
 @synthesize duration                = m_duration;
 @synthesize playbackTimer           = m_playbackTimer;
@@ -282,14 +281,14 @@
 #pragma mark - AVAudioPlayer Playback Duration Managment
 - (void)meditationDidFinishWithState:(NSNumber *)state {
     ResourceContext *resourceContext = [ResourceContext instance];
-    MeditationInstance *meditationInstance = (MeditationInstance *)[resourceContext resourceWithType:MEDITATIONINSTANCE withID:self.meditationID];
+    MeditationInstance *meditationInstance = (MeditationInstance *)[resourceContext resourceWithType:MEDITATIONINSTANCE withID:self.meditationInstanceID];
     
     if ([state intValue] == kCOMPLETED) {
         // Meditation fisished its full specified duration
         // Update properties of meditation instance
         meditationInstance.state = state;
         meditationInstance.percentcompleted = [NSNumber numberWithDouble:1.00];
-        meditationInstance.datecompleted = [NSNumber numberWithDouble:[[NSDate date]timeIntervalSince1970]];
+        meditationInstance.datecompleted = [NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]];
     }
     else {
         // Meditation was stopped before full specified duration met
@@ -299,6 +298,8 @@
         NSTimeInterval timeLeft = self.duration - self.audioPlayerMusic.currentTime;
         double percentComplete = timeLeft / self.duration;
         meditationInstance.percentcompleted = [NSNumber numberWithDouble:percentComplete];
+        
+        meditationInstance.datecompleted = [NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]];
     }
     
     [resourceContext save:NO onFinishCallback:nil trackProgressWith:nil];
