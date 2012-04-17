@@ -118,4 +118,5 @@ NSString* const NUMLIKES                =@"numlikes";
  NSString* const LASTNAME               =@"lastname";
 NSString* const NUMGUIDEDCOMPLETED      =@"numguidedcompleted";
  NSString* const NUMMINDFULNESSCOMPLETED=@"nummindfulnesscompleted";
+NSString* const TYPE                    =@"type";
 

@@ -3,7 +3,7 @@
 //  shAnti
 //
 //  Created by Jordan Gurrieri on 4/13/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Blue Label Solutions LLC. All rights reserved.
 //
 
 #import "shAntiMeditationViewController.h"
@@ -134,8 +134,13 @@
     [super viewWillDisappear:animated];
     
     // Determine if the meditaiton has completed fully
-    NSTimeInterval timeLeft = self.duration - self.audioPlayerMusic.currentTime;
-    if (timeLeft > 0.5) {
+    //NSTimeInterval timeLeft = self.duration - self.audioPlayerMusic.currentTime;
+    //if (timeLeft > 0.5) {
+    
+    ResourceContext *resourceContext = [ResourceContext instance];
+    MeditationInstance *meditationInstance = (MeditationInstance *)[resourceContext resourceWithType:MEDITATIONINSTANCE withID:self.meditationInstanceID];
+    
+    if ([meditationInstance.state intValue] != kCOMPLETED) {
         [self meditationDidFinishWithState:[NSNumber numberWithInt:kINPROGRESS]];
     }
     
@@ -275,6 +280,18 @@
 
 -(void)onInfoButtonPressed
 {
+    // TEMP: Temporary for demo, stop the meditation and mark as complete
+    [self pauseAudio];
+    [self meditationDidFinishWithState:[NSNumber numberWithInt:kCOMPLETED]];
+    
+    // Show meditation complete alert
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Congrats!"
+                                                    message:@"You finished your meditation./nDo you want to set a reminder for another?" 
+                                                   delegate:self 
+                                          cancelButtonTitle:@"No thanks" 
+                                          otherButtonTitles:@"Set reminder", nil];
+    [alert show];
+    [alert release];
 }
 
 
@@ -296,7 +313,7 @@
         meditationInstance.state = state;
         
         NSTimeInterval timeLeft = self.duration - self.audioPlayerMusic.currentTime;
-        double percentComplete = timeLeft / self.duration;
+        double percentComplete = 1.00 - (timeLeft / self.duration);
         meditationInstance.percentcompleted = [NSNumber numberWithDouble:percentComplete];
         
         meditationInstance.datecompleted = [NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]];
@@ -344,6 +361,60 @@
 
 -(void)audioPlayerEndInterruption:(AVAudioPlayer *)player
 {
+}
+
+#pragma mark - UIAlertView Delegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if (buttonIndex == 1) {
+        // Create calendar event
+        EKEventStore *eventStore = [[[EKEventStore alloc] init] autorelease];
+        EKEvent *event = [EKEvent eventWithEventStore:eventStore];
+        event.title = @"shAnti Meditation Reminder";
+        event.location = @"shAnti for iPhone";
+        
+        // Create the reminder date of the next meditation
+        NSDateComponents *time = [[NSCalendar currentCalendar]
+                                  components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit | NSHourCalendarUnit
+                                  fromDate:[NSDate date]];
+        
+        // Set the reminder start date to 24 hours from now
+        NSInteger day = [time day];
+        [time setDay:(day + 1)];
+        
+        NSDate *reminderDateStart = [[NSCalendar currentCalendar] dateFromComponents:time];
+        
+        // Set the reminder end date to the same day but 1 hour later
+        NSInteger hour = [time hour];
+        [time setHour:(hour + 1)];
+        
+        NSDate *reminderDateEnd = [[NSCalendar currentCalendar] dateFromComponents:time];
+        
+        event.startDate = reminderDateStart;
+        event.endDate = reminderDateEnd;
+        [event addAlarm:[EKAlarm alarmWithRelativeOffset:(-15 * 60)]];
+        [event setCalendar:[eventStore defaultCalendarForNewEvents]];
+        
+        // Launch Event View Controller for editing and saving event
+        EKEventEditViewController *eventViewController = [[EKEventEditViewController alloc] init];
+        eventViewController.eventStore = eventStore;
+        eventViewController.event = event;
+        eventViewController.editViewDelegate = self;
+        [self presentModalViewController:eventViewController animated:YES];
+        [eventViewController release];
+    }
+    else {
+        // Close the Meditation view
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
+#pragma mark - EventKitUI delegate
+- (void)eventEditViewController:(EKEventEditViewController *)controller didCompleteWithAction:(EKEventEditViewAction)action {
+    [self dismissModalViewControllerAnimated:YES];
+    
+    // Close the Meditation view
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

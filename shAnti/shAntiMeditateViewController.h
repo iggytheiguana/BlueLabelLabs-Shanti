@@ -3,7 +3,7 @@
 //  shAnti
 //
 //  Created by Jordan Gurrieri on 4/13/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Blue Label Solutions LLC. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -16,7 +16,11 @@
     
     NSArray         *m_deepBreathing;
     NSArray         *m_bobyScan;
+    NSArray         *m_walking;
     NSArray         *m_groupMeditation;
+    
+    NSNumber        *m_selectedMeditationID;
+    NSDate          *m_scheduledDate;
 }
 
 @property (nonatomic, retain) IBOutlet UISegmentedControl   *sgmt_segmentedControl;
@@ -24,7 +28,11 @@
 
 @property (nonatomic, retain) NSArray     *deepBreathing;
 @property (nonatomic, retain) NSArray     *bobyScan;
+@property (nonatomic, retain) NSArray     *walking;
 @property (nonatomic, retain) NSArray     *groupMeditation;
+
+@property (nonatomic, retain) NSNumber    *selectedMeditationID;
+@property (nonatomic, retain) NSDate      *scheduledDate;
 
 - (IBAction)indexDidChangeForSegmentedControl:(UISegmentedControl*)segmentedControl;
 

@@ -3,13 +3,14 @@
 //  shAnti
 //
 //  Created by Jordan Gurrieri on 4/13/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Blue Label Solutions LLC. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVAudioPlayer.h>
+#import "EventKitUI/EKEventEditViewController.h"
 
-@interface shAntiMeditationViewController : UIViewController <AVAudioPlayerDelegate> {
+@interface shAntiMeditationViewController : UIViewController < AVAudioPlayerDelegate, UIAlertViewDelegate, EKEventEditViewDelegate > {
     UIImageView     *m_iv_mediaBar;
     UISlider        *m_sld_volumeControl;
     UISlider        *m_sld_volumeControl2;
@@ -17,12 +18,11 @@
     UIButton        *m_btn_pause;
     UIButton        *m_btn_rewind;
     UIButton        *m_btn_favorite;
-    UIButton        *m_btn_info;
+    UIBarButtonItem *m_btn_info;
     UIButton        *m_btn_music;
     UIButton        *m_btn_voice;
     UILabel         *m_lbl_timeRemaining;
     
-    NSNumber        *m_meditationID;
     NSNumber        *m_meditationInstanceID;
     int             m_duration;
     NSTimer         *m_playbackTimer;
@@ -41,12 +41,11 @@
 @property (nonatomic, retain) IBOutlet UIButton         *btn_pause;
 @property (nonatomic, retain) IBOutlet UIButton         *btn_rewind;
 @property (nonatomic, retain) IBOutlet UIButton         *btn_favorite;
-@property (nonatomic, retain) IBOutlet UIButton         *btn_info;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem  *btn_info;
 @property (nonatomic, retain) IBOutlet UIButton         *btn_music;
 @property (nonatomic, retain) IBOutlet UIButton         *btn_voice;
 @property (nonatomic, retain) IBOutlet UILabel          *lbl_timeRemaining;
 
-@property (nonatomic, retain)          NSNumber         *meditationID;
 @property (nonatomic, retain)          NSNumber         *meditationInstanceID;
 @property                              int              duration;
 @property (nonatomic, retain)          NSTimer          *playbackTimer;

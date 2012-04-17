@@ -3,7 +3,7 @@
 //  shAnti
 //
 //  Created by Jordan Gurrieri on 4/13/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Blue Label Solutions LLC. All rights reserved.
 //
 
 #import "shAntiMeditateViewController.h"
@@ -25,7 +25,10 @@
 @synthesize tbl_meditate    = m_tbl_meditate;
 @synthesize deepBreathing   = m_deepBreathing;
 @synthesize bobyScan        = m_bobyScan;
+@synthesize walking         = m_walking;
 @synthesize groupMeditation = m_groupMeditation;
+@synthesize selectedMeditationID = m_selectedMeditationID;
+@synthesize scheduledDate   = m_scheduledDate;
 
 #pragma mark - Properties
 - (void)setupArrays {
@@ -47,6 +50,7 @@
     
     self.deepBreathing = [Meditation loadDefaultMeditationsOfType:[NSNumber numberWithInt:DEEPBREATHING]];
     self.bobyScan = [Meditation loadDefaultMeditationsOfType:[NSNumber numberWithInt:BODYSCAN]];
+    self.walking = [Meditation loadDefaultMeditationsOfType:[NSNumber numberWithInt:WALKING]];
     self.groupMeditation = [Meditation loadDefaultMeditationsOfType:[NSNumber numberWithInt:GROUP]];
     
 }
@@ -93,7 +97,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -106,6 +110,9 @@
         return self.bobyScan.count;
     }
     else if (section == 2) {
+        return self.walking.count;
+    }
+    else if (section == 3) {
         return self.groupMeditation.count;
     }
     else {
@@ -183,6 +190,20 @@
         }
         
         Meditation *meditation = [self.bobyScan objectAtIndex:indexPath.row];
+        
+        cell.textLabel.text = meditation.displayname;
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ likes", [meditation.numlikes stringValue]];
+    }
+    else if (indexPath.section == 2) {
+        CellIdentifier = @"WalkingMeditation";
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        // Configure the cell...
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+        }
+        
+        Meditation *meditation = [self.walking objectAtIndex:indexPath.row];
         
         cell.textLabel.text = meditation.displayname;
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ likes", [meditation.numlikes stringValue]];
@@ -269,8 +290,12 @@
     if (indexPath.section == 0) {
         Meditation *meditation = [self.deepBreathing objectAtIndex:indexPath.row];
         
+        // Store selected meditation and scheduled date in local properties
+        self.selectedMeditationID = meditation.objectid;
+        self.scheduledDate = [NSDate date];
+        
         // Create a new meditation instance
-        MeditationInstance* meditationInstance = [MeditationInstance createInstanceOfMeditation:meditation.objectid forUserID:nil withState:[NSNumber numberWithInt:kINPROGRESS] withScheduledDate:[NSNumber numberWithDouble:[[NSDate date] timeIntervalSinceNow]]];
+        MeditationInstance* meditationInstance = [MeditationInstance createInstanceOfMeditation:meditation.objectid forUserID:nil withState:[NSNumber numberWithInt:kINPROGRESS] withScheduledDate:[NSNumber numberWithDouble:[self.scheduledDate timeIntervalSinceNow]]];
         
         // Save new meditation instance
         ResourceContext* resourceContext = [ResourceContext instance];
@@ -279,15 +304,19 @@
         shAntiMeditationViewController *meditationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MeditationViewController"];
         [meditationViewController setTitle:@"Deep Breathing"];
         meditationViewController.meditationInstanceID = meditationInstance.objectid;
-        //[meditationViewController setDuration:[meditation.duration intValue]];
-        [meditationViewController setDuration:10];
+        [meditationViewController setDuration:[meditation.duration intValue]];
+        //[meditationViewController setDuration:10];
         [self.navigationController pushViewController:meditationViewController animated:YES];
     }
     else if (indexPath.section == 1) {
         Meditation *meditation = [self.bobyScan objectAtIndex:indexPath.row];
         
+        // Store selected meditation and scheduled date in local properties
+        self.selectedMeditationID = meditation.objectid;
+        self.scheduledDate = [NSDate date];
+        
         // Create a new meditation instance
-        MeditationInstance* meditationInstance = [MeditationInstance createInstanceOfMeditation:meditation.objectid forUserID:nil withState:[NSNumber numberWithInt:kINPROGRESS] withScheduledDate:[NSNumber numberWithDouble:[[NSDate date] timeIntervalSinceNow]]];
+        MeditationInstance* meditationInstance = [MeditationInstance createInstanceOfMeditation:meditation.objectid forUserID:nil withState:[NSNumber numberWithInt:kINPROGRESS] withScheduledDate:[NSNumber numberWithDouble:[self.scheduledDate timeIntervalSinceNow]]];
         
         // Save new meditation instance
         ResourceContext* resourceContext = [ResourceContext instance];
@@ -299,22 +328,46 @@
         [meditationViewController setDuration:[meditation.duration intValue]];
         [self.navigationController pushViewController:meditationViewController animated:YES];
     }
+    else if (indexPath.section == 2) {
+        Meditation *meditation = [self.walking objectAtIndex:indexPath.row];
+        
+        // Store selected meditation and scheduled date in local properties
+        self.selectedMeditationID = meditation.objectid;
+        self.scheduledDate = [NSDate date];
+        
+        // Create a new meditation instance
+        MeditationInstance* meditationInstance = [MeditationInstance createInstanceOfMeditation:meditation.objectid forUserID:nil withState:[NSNumber numberWithInt:kINPROGRESS] withScheduledDate:[NSNumber numberWithDouble:[self.scheduledDate timeIntervalSinceNow]]];
+        
+        // Save new meditation instance
+        ResourceContext* resourceContext = [ResourceContext instance];
+        [resourceContext save:NO onFinishCallback:nil trackProgressWith:nil];
+        
+        shAntiMeditationViewController *meditationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MeditationViewController"];
+        [meditationViewController setTitle:@"Walking Meditation"];
+        meditationViewController.meditationInstanceID = meditationInstance.objectid;
+        [meditationViewController setDuration:[meditation.duration intValue]];
+        [self.navigationController pushViewController:meditationViewController animated:YES];
+    }
     else {
-        // Create the scheduled date of the meditation
+        Meditation *meditation = [self.groupMeditation objectAtIndex:indexPath.row];
+        
+        // Store selected meditation and scheduled date in local properties
+        self.selectedMeditationID = meditation.objectid;
+        
+        // Create the scheduled date of the group meditation
         NSDateComponents *time = [[NSCalendar currentCalendar]
                                   components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit | NSHourCalendarUnit
                                   fromDate:[NSDate date]];
         NSInteger hour = [time hour];
         [time setHour:(hour + indexPath.row + 1)];
-        NSDate *startDate = [[NSCalendar currentCalendar] dateFromComponents:time];
+        self.scheduledDate = [[NSCalendar currentCalendar] dateFromComponents:time];
         
-        // Create a new meditation instance
-        Meditation *meditation = [self.groupMeditation objectAtIndex:indexPath.row];
-        MeditationInstance* meditationInstance = [MeditationInstance createInstanceOfMeditation:meditation.objectid forUserID:nil withState:[NSNumber numberWithInt:kSCHEDULED] withScheduledDate:[NSNumber numberWithDouble:[startDate timeIntervalSinceNow]]];
+        /*// Create a new meditation instance
+        MeditationInstance* meditationInstance = [MeditationInstance createInstanceOfMeditation:meditation.objectid forUserID:nil withState:[NSNumber numberWithInt:kSCHEDULED] withScheduledDate:[NSNumber numberWithDouble:[self.scheduledDate timeIntervalSinceNow]]];
         
         // Save new meditation instance
         ResourceContext* resourceContext = [ResourceContext instance];
-        [resourceContext save:NO onFinishCallback:nil trackProgressWith:nil];
+        [resourceContext save:NO onFinishCallback:nil trackProgressWith:nil];*/
         
         // Create calendar event
         EKEventStore *eventStore = [[[EKEventStore alloc] init] autorelease];
@@ -322,7 +375,7 @@
         event.title = @"shAnti Group Meditation";
         event.location = @"shAnti for iPhone";
         
-        event.startDate = startDate;
+        event.startDate = self.scheduledDate;
         event.endDate = [[NSDate alloc] initWithTimeInterval:[meditation.duration intValue] sinceDate:event.startDate];
         [event addAlarm:[EKAlarm alarmWithRelativeOffset:(-15 * 60)]];
         [event setCalendar:[eventStore defaultCalendarForNewEvents]];
@@ -340,6 +393,20 @@
 #pragma mark - EventKitUI delegate
 - (void)eventEditViewController:(EKEventEditViewController *)controller didCompleteWithAction:(EKEventEditViewAction)action {
     [self dismissModalViewControllerAnimated:YES];
+    
+    if (action == EKEventEditViewActionSaved) {
+        // Calendar event saved
+        // Create a new meditation instance
+        MeditationInstance* meditationInstance = [MeditationInstance createInstanceOfMeditation:self.selectedMeditationID forUserID:nil withState:[NSNumber numberWithInt:kSCHEDULED] withScheduledDate:[NSNumber numberWithDouble:[self.scheduledDate timeIntervalSinceNow]]];
+        
+        // Save new meditation instance
+        ResourceContext* resourceContext = [ResourceContext instance];
+        [resourceContext save:NO onFinishCallback:nil trackProgressWith:nil];
+    }
+    else {
+        // Calendar event canceled or deleted, clear the locally selected meditation instance
+        self.selectedMeditationID = nil;
+    }
 }
 
 @end

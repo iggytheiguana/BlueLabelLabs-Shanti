@@ -60,7 +60,7 @@
     NSArray *durationsArray = [NSArray arrayWithObjects:[NSNumber numberWithInt:(2*60)], [NSNumber numberWithInt:(5*60)], [NSNumber numberWithInt:(10*60)], nil];
     NSArray *displaynamesArray = [NSArray arrayWithObjects:@"2 min", @"5 min", @"10 min", nil];
     
-    if ([type intValue] == DEEPBREATHING || [type intValue] == BODYSCAN) {
+    if ([type intValue] == DEEPBREATHING || [type intValue] == BODYSCAN || [type intValue] == WALKING) {
         for (int i = 0; i < 3; i++) {
             Meditation *meditation = [Meditation createMeditationOfType:type withDuration:[durationsArray objectAtIndex:i] withDisplayname:[displaynamesArray objectAtIndex:i] withMusicURL:musicURL withVoiceURL:voiceURL];
             [retVal addObject:meditation];

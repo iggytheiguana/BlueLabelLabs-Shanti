@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5213D6B4153BC03700D04359 /* shAntiGroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5213D6B3153BC03700D04359 /* shAntiGroupsViewController.m */; };
 		526C22C41538A8D8003008AB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 526C22C31538A8D8003008AB /* UIKit.framework */; };
 		526C22C61538A8D8003008AB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 526C22C51538A8D8003008AB /* Foundation.framework */; };
 		526C22C81538A8D8003008AB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 526C22C71538A8D8003008AB /* CoreGraphics.framework */; };
@@ -193,6 +194,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5213D6B2153BC03700D04359 /* shAntiGroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shAntiGroupsViewController.h; sourceTree = "<group>"; };
+		5213D6B3153BC03700D04359 /* shAntiGroupsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = shAntiGroupsViewController.m; sourceTree = "<group>"; };
 		526C22BF1538A8D8003008AB /* shAnti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = shAnti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		526C22C31538A8D8003008AB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		526C22C51538A8D8003008AB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -633,6 +636,8 @@
 				526C22D51538A8D8003008AB /* MainStoryboard.storyboard */,
 				526C22D81538A8D8003008AB /* shAntiFirstViewController.h */,
 				526C22D91538A8D8003008AB /* shAntiFirstViewController.m */,
+				5213D6B2153BC03700D04359 /* shAntiGroupsViewController.h */,
+				5213D6B3153BC03700D04359 /* shAntiGroupsViewController.m */,
 				526C22DF1538A8D8003008AB /* shAntiSecondViewController.h */,
 				526C22E01538A8D8003008AB /* shAntiSecondViewController.m */,
 				526C23571538CD21003008AB /* shAntiMeditateViewController.h */,
@@ -1530,6 +1535,7 @@
 				C5F50499153A9F82002583E3 /* MeditationInstance.m in Sources */,
 				C5F5049C153AA17C002583E3 /* Meditation.m in Sources */,
 				5271AFF4153B930800E08223 /* shAntiProgressViewController.m in Sources */,
+				5213D6B4153BC03700D04359 /* shAntiGroupsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1570,6 +1576,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		526BCFC9153CEFA80002648C /* Ad Hoc Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Ad Hoc Distribution";
+		};
+		526BCFCA153CEFA80002648C /* Ad Hoc Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Blue Label Solutions LLC";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "shAnti/shAnti-Prefix.pch";
+				"HEADER_SEARCH_PATHS[arch=*]" = /usr/include/libxml2;
+				INFOPLIST_FILE = "shAnti/shAnti-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "52A7ACF8-6B87-4A06-A860-FA5A72D0D373";
+				WRAPPER_EXTENSION = app;
+			};
+			name = "Ad Hoc Distribution";
+		};
 		526C22E61538A8D8003008AB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1659,6 +1705,7 @@
 			buildConfigurations = (
 				526C22E61538A8D8003008AB /* Debug */,
 				526C22E71538A8D8003008AB /* Release */,
+				526BCFC9153CEFA80002648C /* Ad Hoc Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1668,6 +1715,7 @@
 			buildConfigurations = (
 				526C22E91538A8D8003008AB /* Debug */,
 				526C22EA1538A8D8003008AB /* Release */,
+				526BCFCA153CEFA80002648C /* Ad Hoc Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

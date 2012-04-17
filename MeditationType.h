@@ -12,6 +12,7 @@ typedef enum
 {
     DEEPBREATHING,
     BODYSCAN,
+    WALKING,
     GROUP,
     MINDFULNESS
 } MeditationType;

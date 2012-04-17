@@ -1,12 +1,12 @@
 //
-//  shAntiProgressViewController.m
+//  shAntiGroupsViewController.m
 //  shAnti
 //
 //  Created by Jordan Gurrieri on 4/15/12.
 //  Copyright (c) 2012 Blue Label Solutions LLC. All rights reserved.
 //
 
-#import "shAntiProgressViewController.h"
+#import "shAntiGroupsViewController.h"
 #import "Attributes.h"
 #import "DateTimeHelper.h"
 #import "Meditation.h"
@@ -14,13 +14,13 @@
 #import "MeditationType.h"
 #import "MeditationState.h"
 
-@interface shAntiProgressViewController ()
+@interface shAntiGroupsViewController ()
 
 @end
 
-@implementation shAntiProgressViewController
+@implementation shAntiGroupsViewController
 @synthesize frc_meditationInstances = __frc_meditationInstances;
-@synthesize tbl_progress            = m_tbl_progress;
+@synthesize tbl_groups              = m_tbl_groups;
 
 
 #pragma mark - Properties
@@ -36,10 +36,14 @@
     
     NSSortDescriptor* sortDescriptor = [[NSSortDescriptor alloc] initWithKey:DATECREATED ascending:NO];
     
-    //add predicate to grab only completed and inprogress meditations
+    //add predicate to grab only group meditation instances
+    //NSString* stateAttributeNameStringValue = [NSString stringWithFormat:@"%@", TYPE];
+    //NSPredicate* predicate = [NSPredicate predicateWithFormat:@"%K=%d", stateAttributeNameStringValue, GROUP];
+    
+    //add predicate to grab only scheduled meditations
     NSString* stateAttributeNameStringValue = [NSString stringWithFormat:@"%@",STATE];
     
-    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"%K=%d OR %K=%d",stateAttributeNameStringValue, kCOMPLETED, stateAttributeNameStringValue, kINPROGRESS];
+    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"%K=%d",stateAttributeNameStringValue, kSCHEDULED];
     
     [fetchRequest setPredicate:predicate];
     [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
@@ -66,50 +70,19 @@
     
 }
 
-- (NSString *)getTextForMeditationType:(NSNumber *)type {
-    NSString *retVal;
-    
-    if ([type intValue] == DEEPBREATHING) {
-        retVal = @"deep breathing";
-    }
-    else if ([type intValue] == BODYSCAN) {
-        retVal = @"body scan";
-    }
-    else if ([type intValue] == WALKING) {
-        retVal = @"walking";
-    }
-    else if ([type intValue] == GROUP) {
-        retVal = @"group";
-    }
-    else if ([type intValue] == MINDFULNESS) {
-        retVal = @"mindfulness";
-    }
-    else {
-        retVal = @"";
-    }
-    
-    return retVal;
-}
-
 - (NSString *)getTextLabelStringForMeditationInstance:(NSNumber *)meditationInstanceID {
     ResourceContext *resourceContext = [ResourceContext instance];
     MeditationInstance *meditationInstance = (MeditationInstance *)[resourceContext resourceWithType:MEDITATIONINSTANCE withID:meditationInstanceID];
     Meditation *meditation = (Meditation *)[resourceContext resourceWithType:MEDITATION withID:meditationInstance.meditationtypeid];
     
-    NSString *textLabelString;
+    NSDate *dateScheduled = [DateTimeHelper parseWebServiceDateDouble:meditationInstance.datecompleted];
+    NSString *dateScheduledString = [DateTimeHelper formatMediumDate:dateScheduled];
     
-    if ([meditationInstance.state intValue] == kCOMPLETED) {
-        textLabelString = [NSString stringWithFormat:@"Congrats! You completed a %@ %@ meditation.", meditation.displayname, [self getTextForMeditationType:meditation.type]];
-    }
-    else if ([meditationInstance.state intValue] == kINPROGRESS) {
-        textLabelString = [NSString stringWithFormat:@"You completed %d%% of a %@ %@ meditation.", (int)([meditationInstance.percentcompleted doubleValue]*100), meditation.displayname, [self getTextForMeditationType:meditation.type]];
-    }
-    else {
-        textLabelString = meditation.displayname;
-    }
+    NSString *textLabelString = [NSString stringWithFormat:@"Group meditation scheduled for %@, %@.", dateScheduledString, meditation.displayname];
     
     return textLabelString;
 }
+
 
 #pragma mark - Initialization
 - (id)initWithStyle:(UITableViewStyle)style
@@ -138,13 +111,13 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
     
-    self.tbl_progress = nil;
+    self.tbl_groups = nil;
 }
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [self.tbl_progress reloadData];
+    [self.tbl_groups reloadData];
 }
 
 - (void) viewDidDisappear:(BOOL)animated {
@@ -177,7 +150,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Progress";
+    static NSString *CellIdentifier = @"Groups";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     // Configure the cell...
@@ -189,28 +162,12 @@
     MeditationInstance *meditationInstance = [[self.frc_meditationInstances fetchedObjects] objectAtIndex:indexPath.row];
     Meditation *meditation = (Meditation *)[resourceContext resourceWithType:MEDITATION withID:meditationInstance.meditationtypeid];
     
-    /*if ([meditationInstance.state intValue] == kCOMPLETED) {
-        cell.textLabel.text = [NSString stringWithFormat:@"Congrats! You completed a %@ meditation.", meditation.displayname];
-    }
-    else if ([meditationInstance.state intValue] == kINPROGRESS) {
-        cell.textLabel.text = [NSString stringWithFormat:@"You've completed only %d\% of a %@ meditation.", [meditationInstance.percentcompleted doubleValue]*100, meditation.displayname];
-    }
-    else {
-        cell.textLabel.text = meditation.displayname;
-    }*/
-    
     //cell.textLabel.text = meditation.displayname;
     cell.textLabel.text = [self getTextLabelStringForMeditationInstance:meditationInstance.objectid];
     
-    if ([meditationInstance.state intValue] == kINPROGRESS) {
-        cell.textLabel.textColor = [UIColor redColor];
-    }
-    else {
-        cell.textLabel.textColor = [UIColor blackColor];
-    }
-    
-    NSDate *dateCompleted = [DateTimeHelper parseWebServiceDateDouble:meditationInstance.datecompleted];
-    cell.detailTextLabel.text = [DateTimeHelper formatMediumDateWithTime:dateCompleted includeSeconds:NO];
+    //NSDate *dateCompleted = [DateTimeHelper parseWebServiceDateDouble:meditationInstance.datecompleted];
+    //cell.detailTextLabel.text = [DateTimeHelper formatMediumDateWithTime:dateCompleted includeSeconds:NO];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ people attending", [meditation.numpeople stringValue]];
     
     return cell;
 }
@@ -257,30 +214,19 @@
 #pragma mark - Table view delegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    //ResourceContext *resourceContext = [ResourceContext instance];
+    ResourceContext *resourceContext = [ResourceContext instance];
     MeditationInstance *meditationInstance = [[self.frc_meditationInstances fetchedObjects] objectAtIndex:indexPath.row];
-    //Meditation *meditation = (Meditation *)[resourceContext resourceWithType:MEDITATION withID:meditationInstance.meditationtypeid];
+    Meditation *meditation = (Meditation *)[resourceContext resourceWithType:MEDITATION withID:meditationInstance.meditationtypeid];
     
     NSString *textLabelString = [self getTextLabelStringForMeditationInstance:meditationInstance.objectid];
     
-    /*if ([meditationInstance.state intValue] == kCOMPLETED) {
-        textLabelString = [NSString stringWithFormat:@"Congrats! You completed a %@ meditation.", meditation.displayname];
-    }
-    else if ([meditationInstance.state intValue] == kINPROGRESS) {
-        textLabelString = [NSString stringWithFormat:@"You've completed only %d\% of a %@ meditation.", [meditationInstance.percentcompleted doubleValue]*100, meditation.displayname];
-    }
-    else {
-        textLabelString = meditation.displayname;
-    }*/
-    
     CGSize sizeTextLabel = [textLabelString 
-                   sizeWithFont:[UIFont boldSystemFontOfSize:18] 
-                   constrainedToSize:CGSizeMake(300, CGFLOAT_MAX)];
-    
-    NSDate *dateCompleted = [DateTimeHelper parseWebServiceDateDouble:meditationInstance.datecompleted];
-    CGSize sizeDetailTextLabel = [[DateTimeHelper formatMediumDateWithTime:dateCompleted includeSeconds:NO] 
-                            sizeWithFont:[UIFont systemFontOfSize:14] 
+                            sizeWithFont:[UIFont boldSystemFontOfSize:18] 
                             constrainedToSize:CGSizeMake(300, CGFLOAT_MAX)];
+    
+    CGSize sizeDetailTextLabel = [[NSString stringWithFormat:@"%@ people attending", [meditation.numpeople stringValue]] 
+                                  sizeWithFont:[UIFont systemFontOfSize:14] 
+                                  constrainedToSize:CGSizeMake(300, CGFLOAT_MAX)];
     
     return sizeTextLabel.height + sizeDetailTextLabel.height + 10;
 }
@@ -315,5 +261,6 @@
 {
     
 }
+
 
 @end

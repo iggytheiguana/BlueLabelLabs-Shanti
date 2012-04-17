@@ -126,4 +126,5 @@ extern NSString* const FIRSTNAME;
 extern NSString* const LASTNAME;
 extern NSString* const NUMGUIDEDCOMPLETED;
 extern NSString* const NUMMINDFULNESSCOMPLETED;
+extern NSString* const TYPE;
 
