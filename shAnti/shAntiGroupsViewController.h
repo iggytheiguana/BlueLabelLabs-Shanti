@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 
-@interface shAntiGroupsViewController : BaseViewController < NSFetchedResultsControllerDelegate, UITableViewDelegate, UITableViewDataSource > {
+@interface shAntiGroupsViewController : BaseViewController < NSFetchedResultsControllerDelegate, UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate > {
     UITableView         *m_tbl_groups;
 }
 

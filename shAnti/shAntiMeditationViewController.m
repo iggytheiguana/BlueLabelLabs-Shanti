@@ -116,6 +116,14 @@
     self.playbackTimer = nil;
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    // Ensure Navigation bar is shown
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
@@ -286,7 +294,7 @@
     
     // Show meditation complete alert
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Congrats!"
-                                                    message:@"You finished your meditation./nDo you want to set a reminder for another?" 
+                                                    message:@"You finished your meditation.\nDo you want to set a reminder for another?" 
                                                    delegate:self 
                                           cancelButtonTitle:@"No thanks" 
                                           otherButtonTitles:@"Set reminder", nil];

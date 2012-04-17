@@ -53,6 +53,9 @@
     self.walking = [Meditation loadDefaultMeditationsOfType:[NSNumber numberWithInt:WALKING]];
     self.groupMeditation = [Meditation loadDefaultMeditationsOfType:[NSNumber numberWithInt:GROUP]];
     
+    // Save the Meditation objects
+    ResourceContext* resourceContext = [ResourceContext instance];
+    [resourceContext save:NO onFinishCallback:nil trackProgressWith:nil];
 }
 
 
@@ -295,7 +298,7 @@
         self.scheduledDate = [NSDate date];
         
         // Create a new meditation instance
-        MeditationInstance* meditationInstance = [MeditationInstance createInstanceOfMeditation:meditation.objectid forUserID:nil withState:[NSNumber numberWithInt:kINPROGRESS] withScheduledDate:[NSNumber numberWithDouble:[self.scheduledDate timeIntervalSinceNow]]];
+        MeditationInstance* meditationInstance = [MeditationInstance createInstanceOfMeditation:meditation.objectid forUserID:nil withState:[NSNumber numberWithInt:kINPROGRESS] withScheduledDate:[NSNumber numberWithDouble:[self.scheduledDate timeIntervalSince1970]]];
         
         // Save new meditation instance
         ResourceContext* resourceContext = [ResourceContext instance];
@@ -316,7 +319,7 @@
         self.scheduledDate = [NSDate date];
         
         // Create a new meditation instance
-        MeditationInstance* meditationInstance = [MeditationInstance createInstanceOfMeditation:meditation.objectid forUserID:nil withState:[NSNumber numberWithInt:kINPROGRESS] withScheduledDate:[NSNumber numberWithDouble:[self.scheduledDate timeIntervalSinceNow]]];
+        MeditationInstance* meditationInstance = [MeditationInstance createInstanceOfMeditation:meditation.objectid forUserID:nil withState:[NSNumber numberWithInt:kINPROGRESS] withScheduledDate:[NSNumber numberWithDouble:[self.scheduledDate timeIntervalSince1970]]];
         
         // Save new meditation instance
         ResourceContext* resourceContext = [ResourceContext instance];
@@ -336,7 +339,7 @@
         self.scheduledDate = [NSDate date];
         
         // Create a new meditation instance
-        MeditationInstance* meditationInstance = [MeditationInstance createInstanceOfMeditation:meditation.objectid forUserID:nil withState:[NSNumber numberWithInt:kINPROGRESS] withScheduledDate:[NSNumber numberWithDouble:[self.scheduledDate timeIntervalSinceNow]]];
+        MeditationInstance* meditationInstance = [MeditationInstance createInstanceOfMeditation:meditation.objectid forUserID:nil withState:[NSNumber numberWithInt:kINPROGRESS] withScheduledDate:[NSNumber numberWithDouble:[self.scheduledDate timeIntervalSince1970]]];
         
         // Save new meditation instance
         ResourceContext* resourceContext = [ResourceContext instance];
@@ -356,17 +359,24 @@
         
         // Create the scheduled date of the group meditation
         NSDateComponents *time = [[NSCalendar currentCalendar]
-                                  components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit | NSHourCalendarUnit
+                                  components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit | NSHourCalendarUnit 
                                   fromDate:[NSDate date]];
         NSInteger hour = [time hour];
         [time setHour:(hour + indexPath.row + 1)];
+        
         self.scheduledDate = [[NSCalendar currentCalendar] dateFromComponents:time];
         
-        /*// Create a new meditation instance
-        MeditationInstance* meditationInstance = [MeditationInstance createInstanceOfMeditation:meditation.objectid forUserID:nil withState:[NSNumber numberWithInt:kSCHEDULED] withScheduledDate:[NSNumber numberWithDouble:[self.scheduledDate timeIntervalSinceNow]]];
+        //NSDate *scheduledDate = self.scheduledDate;
+        
+        ResourceContext* resourceContext = [ResourceContext instance];
+        
+        // We start a new undo group here
+        /*[resourceContext.managedObjectContext.undoManager beginUndoGrouping];
+        
+        // Create a new meditation instance, but mark as state = kDRAFT
+        MeditationInstance* meditationInstance = [MeditationInstance createInstanceOfMeditation:meditation.objectid forUserID:nil withState:[NSNumber numberWithInt:kSCHEDULED] withScheduledDate:[NSNumber numberWithDouble:[self.scheduledDate timeIntervalSince1970]]];
         
         // Save new meditation instance
-        ResourceContext* resourceContext = [ResourceContext instance];
         [resourceContext save:NO onFinishCallback:nil trackProgressWith:nil];*/
         
         // Create calendar event
@@ -397,15 +407,29 @@
     if (action == EKEventEditViewActionSaved) {
         // Calendar event saved
         // Create a new meditation instance
-        MeditationInstance* meditationInstance = [MeditationInstance createInstanceOfMeditation:self.selectedMeditationID forUserID:nil withState:[NSNumber numberWithInt:kSCHEDULED] withScheduledDate:[NSNumber numberWithDouble:[self.scheduledDate timeIntervalSinceNow]]];
+        MeditationInstance* meditationInstance = [MeditationInstance createInstanceOfMeditation:self.selectedMeditationID forUserID:nil withState:[NSNumber numberWithInt:kSCHEDULED] withScheduledDate:[NSNumber numberWithDouble:[self.scheduledDate timeIntervalSince1970]]];
+        
+        //NSDate *scheduledDate = self.scheduledDate;
         
         // Save new meditation instance
         ResourceContext* resourceContext = [ResourceContext instance];
         [resourceContext save:NO onFinishCallback:nil trackProgressWith:nil];
+        
+        // Go to the Groups tab to see the new event
+        [self.tabBarController setSelectedIndex:1];
     }
     else {
         // Calendar event canceled or deleted, clear the locally selected meditation instance
+        
+        /*// we undo save request of the last group meditation instance
+        ResourceContext* resourceContext = [ResourceContext instance];
+        [resourceContext.managedObjectContext.undoManager undo];
+        
+        NSError* error = nil;
+        [resourceContext.managedObjectContext save:&error];*/
+        
         self.selectedMeditationID = nil;
+        self.scheduledDate = nil;
     }
 }
 

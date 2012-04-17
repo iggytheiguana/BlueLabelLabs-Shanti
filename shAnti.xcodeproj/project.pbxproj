@@ -196,6 +196,7 @@
 /* Begin PBXFileReference section */
 		5213D6B2153BC03700D04359 /* shAntiGroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shAntiGroupsViewController.h; sourceTree = "<group>"; };
 		5213D6B3153BC03700D04359 /* shAntiGroupsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = shAntiGroupsViewController.m; sourceTree = "<group>"; };
+		526BCFD7153D07970002648C /* shAnti.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = shAnti.entitlements; sourceTree = "<group>"; };
 		526C22BF1538A8D8003008AB /* shAnti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = shAnti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		526C22C31538A8D8003008AB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		526C22C51538A8D8003008AB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -626,6 +627,7 @@
 		526C22C91538A8D8003008AB /* shAnti */ = {
 			isa = PBXGroup;
 			children = (
+				526BCFD7153D07970002648C /* shAnti.entitlements */,
 				C50C62D91539F095000C0DD9 /* Externals */,
 				C50C62C61539EF3C000C0DD9 /* Views */,
 				C50C62C21539EEDA000C0DD9 /* Generic */,
@@ -1310,6 +1312,7 @@
 			buildPhases = (
 				526C22BB1538A8D7003008AB /* Sources */,
 				526C22BC1538A8D7003008AB /* Frameworks */,
+				526BCFD8153D30680002648C /* ShellScript */,
 				526C22BD1538A8D7003008AB /* Resources */,
 			);
 			buildRules = (
@@ -1408,6 +1411,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		526BCFD8153D30680002648C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash    \nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		526C22BB1538A8D7003008AB /* Sources */ = {
@@ -1600,6 +1619,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_ENTITLEMENTS = shAnti/shAnti.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Blue Label Solutions LLC";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "shAnti/shAnti-Prefix.pch";
@@ -1665,6 +1685,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_ENTITLEMENTS = shAnti/shAnti.entitlements;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "shAnti/shAnti-Prefix.pch";
 				"HEADER_SEARCH_PATHS[arch=*]" = /usr/include/libxml2;
@@ -1683,6 +1704,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_ENTITLEMENTS = shAnti/shAnti.entitlements;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "shAnti/shAnti-Prefix.pch";
 				"HEADER_SEARCH_PATHS[arch=*]" = /usr/include/libxml2;

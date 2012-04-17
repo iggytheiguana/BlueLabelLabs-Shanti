@@ -13,6 +13,7 @@
 #import "MeditationInstance.h"
 #import "MeditationType.h"
 #import "MeditationState.h"
+#import "shAntiMeditationViewController.h"
 
 @interface shAntiGroupsViewController ()
 
@@ -116,6 +117,9 @@
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    // Ensure Navigation bar is hidden
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
     
     [self.tbl_groups reloadData];
 }
@@ -233,15 +237,39 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+    ResourceContext *resourceContext = [ResourceContext instance];
+    MeditationInstance *meditationInstance = [[self.frc_meditationInstances fetchedObjects] objectAtIndex:indexPath.row];
+    Meditation *meditation = (Meditation *)[resourceContext resourceWithType:MEDITATION withID:meditationInstance.meditationtypeid];
+    
+    NSDate *scheduledDate = [DateTimeHelper parseWebServiceDateDouble:meditationInstance.datescheduled];
+    
+    if ([scheduledDate compare:[NSDate date]] == NSOrderedDescending) {
+        // scheduledDate is later than current date
+        // Show alert
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
+                                                        message:@"This group meditation hasn't begun yet. Please check back at the scheduled date and time." 
+                                                       delegate:self 
+                                              cancelButtonTitle:@"OK" 
+                                              otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+    }
+    else {
+        // scheduledDate is prior to or equal to the current date, start the meditation
+        shAntiMeditationViewController *meditationViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MeditationViewController"];
+        [meditationViewController setTitle:@"Group Meditation"];
+        meditationViewController.meditationInstanceID = meditationInstance.objectid;
+        [meditationViewController setDuration:[meditation.duration intValue]];
+        [self.navigationController pushViewController:meditationViewController animated:YES];
+    }
 }
+
+
+#pragma mark - UIAlertView Delegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+}
+
 
 
 #pragma mark - NSFetchedResultsControllerDelegate methods
